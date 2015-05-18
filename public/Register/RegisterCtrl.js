@@ -10,8 +10,11 @@ app.controller('RegisterCtrl', function($scope, mainService, $location) {
             password: $scope.password
         }
         mainService.createUser(newUser).then(function(data) {
+        $("#login-form").delay(100).fadeIn(100);
+        $("#register-form").fadeOut(100);
+        $('#register-form-link').removeClass('active');
+        $('#login-form-link').addClass('active');
             console.log(data);
-            $location.path('/');
         });
     }
 
