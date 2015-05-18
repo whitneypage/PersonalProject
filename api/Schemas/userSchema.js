@@ -7,8 +7,13 @@ var userSchema = new mongoose.Schema ({
 	firstName: { type: String, required: true, lowercase: true },
     lastName: { type: String, required: true, lowercase: true },
 	email: { type: String, required: true, unique: true, lowercase: true },
-	password: { type: String, required: true }
-    // tips: { type: mongoose.Schema.Types.ObjectId, ref: "Tips"}
+	password: { type: String, required: true },
+    tips: [ 
+        {
+            tipDate: { type: String },
+            tipAmount: { type: Number } 
+        }
+    ]
 
 });
 

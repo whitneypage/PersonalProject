@@ -23,7 +23,6 @@ app.controller('RegisterCtrl', function($scope, mainService, $location) {
         mainService.loginUser($scope.loginEmail, $scope.loginPassword).then(function() {
             $location.path('/dashboard');
         }).catch(function(err) {
-            // $scope.loginError = true;
             console.log(err);
         });
     };

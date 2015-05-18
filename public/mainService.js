@@ -42,6 +42,27 @@ this.loginUser = function(email, password) {
 	return deferred.promise;
 };
 
+this.sendTipsData = function(tipsData) {
+	var deferred = $q.defer();
+	$http ({
+		method: 'POST',
+		url: '/api/tips',
+		data: {
+			tipDate: tipsData.date,
+			tipAmount: tipsData.amount
+		}
+	}).then(function(response) {
+		console.log(response);
+		deferred.resolve(response.data)
+	});
+	return deferred.promise;
+};
+
+
+
+
+
+
 
 
 

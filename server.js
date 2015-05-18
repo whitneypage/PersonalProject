@@ -50,24 +50,6 @@ passport.use(new LocalStrategy(
   }
 ));
 
-// passport.use(new LocalStrategy({
-// 	usernameField: 'username',
-// 	passwordField: 'password'
-// }, function(username, password, done) {
-// 	User.findOne({username: email}).exec().then(function(user) {
-// 		if(!user) {
-// 			return done(null, false);
-// 			console.log('no user');
-// 		}
-// 		user.comparePassword(password).then(function(isMatch) {
-// 			if(!isMatch) {
-// 				console.log('no match');
-// 				return done(null, false);
-// 			}
-// 			return done(null, user);
-// 		});
-// 	});
-// }));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -106,7 +88,9 @@ app.post('/api/register', function(req, res) {
 })
 
 
-// app.post('/user', UserCtrl.create);
+app.post('/api/tips', function(req, res) {
+	User.findById
+});
 
 // app.get('/user', UserCtrl.read);
 

@@ -7,13 +7,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">ServerStats</a>
+      <a class="navbar-brand" href="#/dashboard">ServerStats</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="#">Link</a></li>
-        <li class="active"><a href="#">Tips <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#/tips">Tips <span class="sr-only">(current)</span></a></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -23,9 +23,10 @@
   </div>
 </nav>
 
+
 <form class="form-inline" on-click="addTipData()">
     <div class="form-group">
-        <label></label>
+        <label>Date</label>
         <input type="date" class="form-control" ng-model="date" placeholder="Date">
     </div>
     <div class="form-group">
@@ -33,32 +34,15 @@
         <input type="text" class="form-control" ng-model="amount"placeholder="Enter Amount">
     </div>
     <div class="form-group">
-        <button type="submit" class="form-control" on-click="addTipData()">Submit</button>
+        <button type="submit" class="form-control" ng-click="addData()">Submit</button>
     </div>
 </form>
 
+<div id="grid" ui-grid="gridOpts" class="grid"></div>
 
 
 
-
-<table class="table table-striped table-hover ">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Date</th>
-      <th>Amount</th>
-      <th>Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>{{date in dates}}</td>
-      <td>{{amount in amounts}}</td>
-      <td>{{total in totals}}</td>
-    </tr>
-  </tbody>
-</table> 
+ 
 
 
 
