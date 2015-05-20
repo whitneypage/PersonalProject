@@ -1,7 +1,7 @@
 var app = angular.module('serveStats');
 
 app.controller('TipsCtrl', function($scope, mainService) {
-
+ 
   
 	var tipsData = [
 		{
@@ -27,7 +27,6 @@ app.controller('TipsCtrl', function($scope, mainService) {
 	];
 
 	$scope.addData = function() {
-
 		var date = new Date($scope.date);
         var month = monthNames[date.getMonth()];
 		var day = date.getDate();

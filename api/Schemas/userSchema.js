@@ -8,12 +8,17 @@ var userSchema = new mongoose.Schema ({
     lastName: { type: String, required: true, lowercase: true },
 	email: { type: String, required: true, unique: true, lowercase: true },
 	password: { type: String, required: true },
+    locationId: { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Location'
+    },
     tips: [ 
         {
             tipDate: { type: String },
             tipAmount: { type: Number } 
         }
-    ]
+    ], 
+
 
 });
 
