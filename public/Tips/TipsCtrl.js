@@ -1,6 +1,7 @@
 var app = angular.module('serveStats');
 
 app.controller('TipsCtrl', function($scope, mainService) {
+
   
 	var tipsData = [
 		{
@@ -33,7 +34,7 @@ app.controller('TipsCtrl', function($scope, mainService) {
 		var year = date.getFullYear();
 		var newDate = month + " " + day + ", " + year;
 
-		tipsData.unshift({
+		tipsData.push({
 			"date": newDate,
 			"amount": $scope.amount
 		});
@@ -53,6 +54,26 @@ app.controller('TipsCtrl', function($scope, mainService) {
 		});
 
 		
-	};
+	}; //ends addData function
 
+
+	$scope.getTipsData = function() {
+		mainService.getTipsData().then(function(data) {
+			console.log(data);
+			for (var i = 0; i < data.length; i++) {
+				var tipObj = {
+					"date": "",
+					"amount": ""
+				}
+
+				tipObj.date = data[i].tipDate;
+				tipObj.amount = data[i].tipAmount;
+				tipsData.unshift(tipObj);
+
+			};
+			
+		})
+	}
+
+	$scope.getTipsData();
 });

@@ -109,11 +109,16 @@ app.post('/api/tips/:userId', function(req, res) {
 app.get('/api/tips/:userId', function(req, res) {
 	User
 	.findOne({ _id: req.params.userId})
-	.populate('tip')
-	.exec().then(function(users) {
-		return res.json(users);
+	.exec().then(function(data) {
+		return res.json(data);
 	})
 });
+
+ // app.post('/api/tips/:userId', function(req, res) {
+ //        User.findByIdAndUpdate(req.params.userId, req.body, function(err, result) {
+ //            if (err) return res.status(500).send(err);
+ //            res.send(result);
+ //        });
 
 // app.get('/user', UserCtrl.read);
 

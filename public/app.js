@@ -1,4 +1,4 @@
-var app = angular.module('serveStats', ['ngRoute', 'ui.grid']);
+var app = angular.module('serveStats', ['ngRoute', 'ui.grid', 'ui.grid.edit']);
 
 app.config(function($routeProvider) {
 
@@ -11,7 +11,7 @@ app.config(function($routeProvider) {
 
 	.when('/dashboard', {
 		templateUrl: 'Dashboard/dashboard.html',
-		controller: 'DashboardCtrl'
+		controller: 'DashboardCtrl' 
 	})
 
 	.when('/tips', {
