@@ -37,14 +37,18 @@ mongoose.connect(mongoUri, function(err) {
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    User.findOne({ username: username }, function(err, user) {
+  	console.log("inLocal", username);
+    User.findOne({ email: username }, function(err, user) {
+    	console.log("user", user);
+    	console.log("err", err);
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
       }
-      if (!user.validPassword(password)) {
+      if (!user.comparePassword(password)) {
         return done(null, false, { message: 'Incorrect password.' });
       }
+      console.log("user found", user);
       return done(null, user);
     });
   }
@@ -54,12 +58,12 @@ passport.use(new LocalStrategy(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// var isAuthed = function(req, res, next) {
-// 	if(!req.isAuthenticated()) {
-// 		return res.status(403).end();
-// 	}
-// 	return next();
-// }
+var isAuthed = function(req, res, next) {
+	if(!req.isAuthenticated()) {
+		return res.status(403).end();
+	}
+	return next();
+}
 
 passport.serializeUser(function(user, done) {
 	done(null, user);
@@ -73,7 +77,7 @@ app.use(express.static(__dirname+'/public'));
 app.post('/api/auth', function(req, res, next) {
 	console.log('server req made it', req.user);
 	passport.authenticate('local', function(err, user, info) {
-	return res.status(200).end();
+	return res.json(user);
 	}) (req, res, next);
 });
 
@@ -88,8 +92,27 @@ app.post('/api/register', function(req, res) {
 })
 
 
-app.post('/api/tips', function(req, res) {
-	User.findById
+app.post('/api/tips/:userId', function(req, res) {
+    console.log("req.user", req.body);
+    User.findByIdAndUpdate(
+    	req.params.userId,
+    	{$push: {tips: req.body}},
+    	{safe: true},
+    	function(err, model) {
+    		if (!err) res.status(200).json(model);
+    		console.log(err);
+   		 }
+    )
+
+});
+
+app.get('/api/tips/:userId', function(req, res) {
+	User
+	.findOne({ _id: req.params.userId})
+	.populate('tip')
+	.exec().then(function(users) {
+		return res.json(users);
+	})
 });
 
 // app.get('/user', UserCtrl.read);

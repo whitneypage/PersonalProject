@@ -3,6 +3,8 @@ var app = angular.module('serveStats');
 
 app.service('mainService', function($http, $q) {
 
+this.userId;
+
 this.createUser = function(newUser) {
 	console.log('ms-newuser', newUser)
 	var deferred = $q.defer();
@@ -22,6 +24,7 @@ this.createUser = function(newUser) {
 	return deferred.promise;
 };
 
+
 this.loginUser = function(email, password) {
 	console.log('emailpass', email, password)
 	var deferred = $q.defer();
@@ -33,10 +36,11 @@ this.loginUser = function(email, password) {
 			password: password
 		}
 	}).then(function(response) {
-		console.log(response);
+		this.userId = response.data.firstName;
+		console.log("USER ID", this.userId)
 		deferred.resolve(response.data);
 	}).catch(function(err) {
-		console.log('error logging in')
+		console.log('error logging in');
 		deferred.reject(err);
 	})
 	return deferred.promise;
@@ -46,13 +50,12 @@ this.sendTipsData = function(tipsData) {
 	var deferred = $q.defer();
 	$http ({
 		method: 'POST',
-		url: '/api/tips',
+		url: '/api/tips/' + userId, 
 		data: {
 			tipDate: tipsData.date,
 			tipAmount: tipsData.amount
 		}
 	}).then(function(response) {
-		console.log(response);
 		deferred.resolve(response.data)
 	});
 	return deferred.promise;
@@ -60,6 +63,9 @@ this.sendTipsData = function(tipsData) {
 
 
 
+this.getUserName = function() {
+	return this.userId;
+}
 
 
 

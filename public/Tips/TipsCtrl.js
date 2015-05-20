@@ -20,39 +20,39 @@ app.controller('TipsCtrl', function($scope, mainService) {
     	columnDefs: columnDefs,
     	data: tipsData
     }
-	// $scope.dates = ['12/14/1999'];
-	// $scope.amounts = [22.44];
-	// $scope.notes = ['No notes here'];
-	// $scope.total=[];
+	
     var monthNames = ["January", "February", "March", "April", "May", "June",
   		"July", "August", "September", "October", "November", "December"
 	];
 
 	$scope.addData = function() {
 
-		console.log($scope.date);
 		var date = new Date($scope.date);
         var month = monthNames[date.getMonth()];
 		var day = date.getDate();
 		var year = date.getFullYear();
 		var newDate = month + " " + day + ", " + year;
 
-		$scope.gridOpts.data.unshift({
+		tipsData.unshift({
 			"date": newDate,
 			"amount": $scope.amount
 		});
 
-		$scope.date= "";
-		$scope.amount= "";
 
-		var tipsData = {
-			tipDate: newDate,
-			Amount: $scope.Amount
+        var amount = $scope.amount;
+
+		var tip = {
+			date: newDate,
+			amount: amount
 		}
 
-		mainService.sendTipsData(tipsData).then(function(data) {
+		mainService.sendTipsData(tip).then(function(data) {
 			console.log(data);
+			$scope.date= "";
+		    $scope.amount= "";
 		});
+
+		
 	};
 
 });
