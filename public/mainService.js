@@ -104,7 +104,7 @@ app.service('mainService', function($http, $q) {
     };
 
 
-    this.loginUser = function(email, password) {
+    this.loginStore = function(email, password) {
         console.log('emailpass', email, password)
         var deferred = $q.defer();
         $http({
@@ -115,7 +115,7 @@ app.service('mainService', function($http, $q) {
                 password: password
             }
         }).then(function(response) {
-            console.log(response.data);
+            console.log("loginStore", response.data);
             deferred.resolve(response.data);
         }).catch(function(err) {
             console.log('error logging in');

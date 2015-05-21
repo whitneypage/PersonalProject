@@ -43,21 +43,33 @@ mongoose.connect(mongoUri, function(err) {
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
+
   	console.log("inLocal", username);
-    User.findOne({ email: username }, function(err, user) {
-    	console.log("user", user);
-    	console.log("err", err);
+
+  	Location.findOne({ storeEmail: username }, function(err, location) {
       if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
+      if (location) {
+      	 if (!location.comparePassword(password)) {
+        	return done(null, false, { message: 'Incorrect password.' });
+      	}
+     	console.log("location found", location);
+      	return done(null, location);
       }
-      if (!user.comparePassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      console.log("user found", user);
-      return done(null, user);
-    });
-  }
+     else {
+     	  User.findOne({ email: username }, function(err, user) {
+      			if (err) { return done(err); }
+      			if (!user) {
+        			return done(null, false, { message: 'Incorrect username.' });
+     			 }
+      			if (!user.comparePassword(password)) {
+        			return done(null, false, { message: 'Incorrect password.' });
+      			}
+      			console.log("user found", user);
+      			return done(null, user);
+    	});
+     }
+    }
+  )}
 ));
 
 
@@ -102,7 +114,7 @@ app.post('/api/register', function(req, res) {
 		if (err) {
 			return res.status(500).end();
 		}
-		
+
 		return res.json(user);
 	})
 })
@@ -167,11 +179,7 @@ app.post('/api/auth/location', function(req, res, next) {
  //            res.send(result);
  //        });
 
-// app.get('/user', UserCtrl.read);
 
-// app.put('/user', UserCtrl.update);
-
-// app.delete('/user', UserCtrl.delete);
 
 
 

@@ -1,160 +1,97 @@
-html, body {
-	width: 100%;
-	height: 100%;
-	margin: 0 auto;
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
 }
 
+
 .loginContainer {
-	background: url('https://download.unsplash.com/photo-1428908728789-d2de25dbd4e2') no-repeat center center fixed;
-	background-size: cover;
-    
+    background: url('https://download.unsplash.com/photo-1428908728789-d2de25dbd4e2') no-repeat center center fixed;
+    background-size: cover;
     height: 100%;
     width: 100%;
 }
 
 .storeLoginContainer {
-	background: url('https://download.unsplash.com/photo-1418226970361-9f1f7227d638') no-repeat center center fixed;
-	background-size: cover;
-    
+    background: url('https://download.unsplash.com/photo-1428908728789-d2de25dbd4e2') no-repeat center center fixed;
+    background-size: cover;
     height: 100%;
     width: 100%;
 }
 
-.appName p{
-	font-family: 'Josefin Sans', sans-serif;
-	color: white;
-	margin: 0;
-	font-size: 66px;
+.appName p {
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    margin: 0;
+    font-size: 66px;
 }
+
 
 p {
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    margin: 0;
+    font-size: 25px;
+}
+
+.loginForm {
+    padding-top: 15px;
+}
+/* label focus color */
+
+.input-field input[type=text]:focus + label {
+    color: green;
+}
+/* label underline focus color */
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid green;
+    box-shadow: 0 1px 0 0 green;
+}
+/* label focus color */
+
+.input-field input[type=email]:focus + label {
+    color: green;
+}
+/* label underline focus color */
+
+.input-field input[type=email]:focus {
+    border-bottom: 1px solid green;
+    box-shadow: 0 1px 0 0 green;
+}
+/* label focus color */
+
+.input-field input[type=password]:focus + label {
+    color: green;
+}
+/* label underline focus color */
+
+.input-field input[type=password]:focus {
+    border-bottom: 1px solid green;
+    box-shadow: 0 1px 0 0 green;
+}
+/*invalid line color*/
+
+/*.input-field input[type=text].invalid {
+    border-bottom: 1px solid #ffff00;
+    box-shadow: 0 1px 0 0 #ffff00;
+}
+
+.input-field input[type=email].invalid {
+    border-bottom: 1px solid #ffff00;
+    box-shadow: 0 1px 0 0 #ffff00;
+}
+
+.input-field input[type=password].invalid {
+    border-bottom: 1px solid #ffff00;
+    box-shadow: 0 1px 0 0 #ffff00;
+}*/
+
+.nav-wrapper a{
 	font-family: 'Josefin Sans', sans-serif;
-	color: white;
-	margin: 0;
-	font-size: 25px;
+	font-size: 30px;
 }
-
-a:link {
-	text-decoration: none;
-}
-
-#login {
-	padding-top: 100px;
-}
-.panel-login {
-	background-color: transparent;
-	border-color: #ccc;
-	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
-	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
-	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
-}
-.panel-login>.panel-heading {
-	color: #00415d;
-	background-color: transparent;
-	border-color: transparent;
-	text-align:center;
-}
-.panel-login>.panel-heading a{
-	font-family: 'Josefin Sans', sans-serif;
-	text-transform: uppercase;
-	text-decoration: none;
-	color: white;
-	font-weight: 400;
-	font-size: 20px;
-	-webkit-transition: all 0.1s linear;
-	-moz-transition: all 0.1s linear;
-	transition: all 0.1s linear;
-}
-.panel-login>.panel-heading a.active{
-	color: #029f5b;
-	font-size: 18px;
-}
-.panel-login>.panel-heading hr{
-	margin-top: 10px;
-	margin-bottom: 0px;
-	clear: both;
-	border: 0;
-	height: 1px;
-	background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
-	background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
-	background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
-	background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
-}
-.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
-	height: 45px;
-	border: 1px solid #ddd;
-	font-size: 16px;
-	-webkit-transition: all 0.1s linear;
-	-moz-transition: all 0.1s linear;
-	transition: all 0.1s linear;
-}
-.panel-login input:hover,
-.panel-login input:focus {
-	outline:none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	border-color: #ccc;
-}
-.btn-login {
-	background-color: #1CB94E;
-	outline: none;
-	color: #fff;
-	font-size: 14px;
-	height: auto;
-	font-weight: normal;
-	padding: 14px 0;
-	text-transform: uppercase;
-	border-color: #1CB94A;
-}
-.btn-login:hover,
-.btn-login:focus {
-	color: #fff;
-	background-color: #1CA347;
-	border-color: #1CA347;
-}
-.forgot-password {
-	text-decoration: underline;
-	color: #888;
-}
-.forgot-password:hover,
-.forgot-password:focus {
-	text-decoration: underline;
-	color: #666;
-}
-
-.btn-register {
-	background-color: #1CB94E;
-	outline: none;
-	color: #fff;
-	font-size: 14px;
-	height: auto;
-	font-weight: normal;
-	padding: 14px 0;
-	text-transform: uppercase;
-	border-color: #1CB94A;
-}
-.btn-register:hover,
-.btn-register:focus {
-	color: #fff;
-	background-color: #1CA347;
-	border-color: #1CA347;
-}
-
-.grid {
-	width: 80%;
-	height: 800px;
-	margin: 0 auto;
-}
-
-.navbar-brand {
-
-	font-family: 'Josefin Sans', sans-serif;
-	color: #1CB94E;
-	font-size: 40px;
-
-}
-
 
 
 

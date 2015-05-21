@@ -53,17 +53,5 @@ userSchema.methods.comparePassword = function(password) {
 
 
 
-// userSchema.methods.comparePassword = function(pass) {
-//     bcrypt.compare(pass, this.password, function(err, isMatch) {
-//         if (err) {
-//             deferred.reject(err);
-//         }
-//         else {
-//             deferred.resolve(isMatch);
-//         }
-//     });
-//     return deferred.promise;
-// }
-
 
 module.exports = mongoose.model('User', userSchema);

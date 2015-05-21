@@ -14,10 +14,10 @@ app.config(function($routeProvider) {
 		controller: 'storeLoginCtrl'
 	})
 
-	// .when('/storeDashboard' {
-	// 	templateUrl:'StoreDashboard/storeDashboard.html',
-	// 	controller: 'storeDashCtrl'
-	// })
+	.when('/storeDashboard', {
+		templateUrl:'StoreDashboard/storeDashboard.html',
+		controller: 'storeDashCtrl'
+	})
 
 	.when('/dashboard', {
 		templateUrl: 'Dashboard/dashboard.html',
