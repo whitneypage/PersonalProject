@@ -81,6 +81,57 @@ app.service('mainService', function($http, $q) {
     }
 
 
+// Store Login
+
+    this.createStore = function(newStore) {
+        console.log('ms-newStore', newStore)
+        var deferred = $q.defer();
+        $http({
+            method: 'POST',
+            url: '/api/register/location',
+            data: {
+               	storeName: newStore.storeName,
+            	storeNumber: newStore.storeNumber,
+            	ownerName: newStore.ownerName,
+            	storeEmail: newStore.storeEmail,
+            	storePassword: newStore.storePassword
+            }
+        }).then(function(response) {
+            console.log(response.data);
+            deferred.resolve(response.data)
+        });
+        return deferred.promise;
+    };
+
+
+    this.loginUser = function(email, password) {
+        console.log('emailpass', email, password)
+        var deferred = $q.defer();
+        $http({
+            method: 'POST',
+            url: '/api/auth/location',
+            data: {
+                username: email,
+                password: password
+            }
+        }).then(function(response) {
+            console.log(response.data);
+            deferred.resolve(response.data);
+        }).catch(function(err) {
+            console.log('error logging in');
+            deferred.reject(err);
+        })
+        return deferred.promise;
+    };
+
+
+
+
+
+
+
+
+
     // this.editTip = function() {
     // 	var deferred = $q.defer();
     //     $http({

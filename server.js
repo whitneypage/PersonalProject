@@ -18,10 +18,14 @@ app.use(session ({
 	secret: '1343343334'
 }))
 
+
 var UserCtrl = require('./api/Controllers/user-controller');
 var AuthCtrl = require('./api/Controllers/auth-controller');
 
 var User = require('./api/Schemas/userSchema.js');
+var Location = require('./api/Schemas/locationSchema.js');
+
+
 
 
 mongoose.connect(mongoUri, function(err) {
@@ -34,6 +38,8 @@ mongoose.connect(mongoUri, function(err) {
         console.log('Now listening at port: ' + port);
     });
 })
+
+
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
@@ -55,8 +61,12 @@ passport.use(new LocalStrategy(
 ));
 
 
+
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+
 
 var isAuthed = function(req, res, next) {
 	if(!req.isAuthenticated()) {
@@ -64,6 +74,7 @@ var isAuthed = function(req, res, next) {
 	}
 	return next();
 }
+
 
 passport.serializeUser(function(user, done) {
 	done(null, user);
@@ -73,6 +84,10 @@ passport.deserializeUser(function(obj, done) {
 })
 
 app.use(express.static(__dirname+'/public'));
+
+
+
+//User
 
 app.post('/api/auth', function(req, res, next) {
 	console.log('server req made it', req.user);
@@ -113,6 +128,36 @@ app.get('/api/tips/:userId', function(req, res) {
 		return res.json(data);
 	})
 });
+
+
+
+// Store
+
+app.post('/api/register/location', function(req, res) {
+	var newStore = new Location(req.body);
+	newStore.save(function(err, user) {
+		if (err) {
+			return res.status(500).end();
+		}
+		return res.json(user);
+	})
+})/
+
+app.post('/api/auth/location', function(req, res, next) {
+	console.log('server req made it', req.body);
+	passport.authenticate('local', function(err, user, info) {
+	return res.json(user);
+	}) (req, res, next);
+});
+
+
+
+
+
+
+
+
+
 
  // app.post('/api/tips/:userId', function(req, res) {
  //        User.findByIdAndUpdate(req.params.userId, req.body, function(err, result) {

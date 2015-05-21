@@ -12,11 +12,30 @@ html, body {
     width: 100%;
 }
 
+.storeLoginContainer {
+	background: url('https://download.unsplash.com/photo-1418226970361-9f1f7227d638') no-repeat center center fixed;
+	background-size: cover;
+    
+    height: 100%;
+    width: 100%;
+}
+
 .appName p{
 	font-family: 'Josefin Sans', sans-serif;
 	color: white;
 	margin: 0;
 	font-size: 66px;
+}
+
+p {
+	font-family: 'Josefin Sans', sans-serif;
+	color: white;
+	margin: 0;
+	font-size: 25px;
+}
+
+a:link {
+	text-decoration: none;
 }
 
 #login {

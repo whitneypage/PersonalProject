@@ -9,6 +9,16 @@ app.config(function($routeProvider) {
 		controller: 'RegisterCtrl'
 	})
 
+	.when('/storeLogin', {
+		templateUrl:'Register/storeLogin.html',
+		controller: 'storeLoginCtrl'
+	})
+
+	.when('/storeDashboard' {
+		templateUrl:'StoreDashboard/storeDashboard.html',
+		controller: 'storeDashCtrl'
+	})
+
 	.when('/dashboard', {
 		templateUrl: 'Dashboard/dashboard.html',
 		controller: 'DashboardCtrl' 

@@ -14,10 +14,16 @@ var userSchema = new mongoose.Schema ({
     },
     tips: [ 
         {
-            tipDate: { type: String },
-            tipAmount: { type: Number } 
+            tipDate: Date,
+            tipAmount: Number 
         }
     ], 
+    sales: [
+        {
+            date: Date,
+            amount: Number
+        }
+    ]
 
 
 });
