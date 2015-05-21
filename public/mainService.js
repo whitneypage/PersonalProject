@@ -94,7 +94,7 @@ app.service('mainService', function($http, $q) {
             	storeNumber: newStore.storeNumber,
             	ownerName: newStore.ownerName,
             	storeEmail: newStore.storeEmail,
-            	storePassword: newStore.storePassword
+            	password: newStore.storePassword
             }
         }).then(function(response) {
             console.log(response.data);

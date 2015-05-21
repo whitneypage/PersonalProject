@@ -1,4 +1,4 @@
-var app = angular.module('serveStats', ['ngRoute', 'ui.grid', 'ui.grid.edit']);
+var app = angular.module('serveStats', ['ngRoute']);
 
 app.config(function($routeProvider) {
 
@@ -14,10 +14,10 @@ app.config(function($routeProvider) {
 		controller: 'storeLoginCtrl'
 	})
 
-	.when('/storeDashboard' {
-		templateUrl:'StoreDashboard/storeDashboard.html',
-		controller: 'storeDashCtrl'
-	})
+	// .when('/storeDashboard' {
+	// 	templateUrl:'StoreDashboard/storeDashboard.html',
+	// 	controller: 'storeDashCtrl'
+	// })
 
 	.when('/dashboard', {
 		templateUrl: 'Dashboard/dashboard.html',

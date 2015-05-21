@@ -102,6 +102,7 @@ app.post('/api/register', function(req, res) {
 		if (err) {
 			return res.status(500).end();
 		}
+		
 		return res.json(user);
 	})
 })
@@ -136,12 +137,13 @@ app.get('/api/tips/:userId', function(req, res) {
 app.post('/api/register/location', function(req, res) {
 	var newStore = new Location(req.body);
 	newStore.save(function(err, user) {
+		console.log("Post", user);
 		if (err) {
-			return res.status(500).end();
+			return res.status(500).send(err);
 		}
 		return res.json(user);
 	})
-})/
+})
 
 app.post('/api/auth/location', function(req, res, next) {
 	console.log('server req made it', req.body);

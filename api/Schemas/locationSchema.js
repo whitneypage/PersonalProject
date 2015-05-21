@@ -7,7 +7,7 @@ var locationSchema = new mongoose.Schema ({
 	 storeNumber: { type: Number },
 	 ownerName: { type: String, required: true, lowercase: true },
 	 storeEmail: { type: String, required: true, unique: true, lowercase: true },
-	 storePassword: { type: String, required: true },
+	 password: { type: String, required: true },
 	 sales: [
 	 	{
 	 		date: Date,
@@ -19,15 +19,15 @@ var locationSchema = new mongoose.Schema ({
 
 
 locationSchema.pre('save', function(next) {
-    var store = this;
+    var user = this;
     this.timestamp = new Date();
 
     bcrypt.genSalt(function(err, salt) {
         if (err) return next(err);
-        bcrypt.hash(store.password, salt, function(err, hash) {
+        bcrypt.hash(user.password, salt, function(err, hash) {
             if (err) return next(err);
             else {
-                store.password = hash;
+                user.password = hash;
                 next();
             }
         })
