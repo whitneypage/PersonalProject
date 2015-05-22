@@ -5,7 +5,9 @@ app.service('mainService', function($http, $q) {
 
     this.userId;
     this.userName;
+    this.locationId;
 
+// Create User
     this.createUser = function(newUser) {
         console.log('ms-newuser', newUser)
         var deferred = $q.defer();
@@ -16,16 +18,17 @@ app.service('mainService', function($http, $q) {
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
                 email: newUser.email,
-                password: newUser.password
+                password: newUser.password, 
+                locationId: newUser.locationId
             }
         }).then(function(response) {
-            console.log(response);
+            console.log("NewUser", response);
             deferred.resolve(response.data)
         });
         return deferred.promise;
     };
 
-
+//Login User
     this.loginUser = function(email, password) {
         console.log('emailpass', email, password)
         var deferred = $q.defer();
@@ -47,7 +50,7 @@ app.service('mainService', function($http, $q) {
         })
         return deferred.promise;
     };
-
+// Post Tips Data
     this.sendTipsData = function(tipsData) {
         var deferred = $q.defer();
         $http({
@@ -64,11 +67,11 @@ app.service('mainService', function($http, $q) {
     };
 
 
-
+// Display User Name 
     this.getUserName = function() {
         return this.userName;
     }
-
+// Getting Tip Data
     this.getTipsData = function() {
         var deferred = $q.defer();
         $http({
@@ -81,7 +84,7 @@ app.service('mainService', function($http, $q) {
     }
 
 
-// Store Login
+// Store Register
 
     this.createStore = function(newStore) {
         console.log('ms-newStore', newStore)
@@ -103,6 +106,7 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     };
 
+// Store Login
 
     this.loginStore = function(email, password) {
         console.log('emailpass', email, password)
@@ -115,6 +119,8 @@ app.service('mainService', function($http, $q) {
                 password: password
             }
         }).then(function(response) {
+        	this.locationId = response.data._id;
+        	console.log(this.locationId);
             console.log("loginStore", response.data);
             deferred.resolve(response.data);
         }).catch(function(err) {
@@ -124,9 +130,22 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     };
 
-
-
-
+// Get Server List from Location
+	
+	   this.getServerList = function() {
+        var deferred = $q.defer();
+        $http({
+            method: 'GET',
+            url: '/api/' + locationId
+        }).then(function(response) {
+        	deferred.resolve(response.data)
+        });
+        return deferred.promise;
+    }
+ 	
+ 	this.getLocalId = function() {
+ 		return this.locationId
+ 	}
 
 
 

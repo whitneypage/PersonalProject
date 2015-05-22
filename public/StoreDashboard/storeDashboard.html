@@ -2,7 +2,7 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper green">
-                <a class="brand-logo">Logo</a>
+                <a class="brand-logo" href="/#/">LOGIN</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="sass.html">Sass</a></li>
                     <li><a href="components.html">Components</a></li>
@@ -29,25 +29,25 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="store_id" ng-model="store_id" type="text" class="validate green-text">
+                        <input id="store_id" value="{{localId}}" ng-model="locationId" type="text" class="validate green-text">
                         <label for="store_id">Store ID</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" ng-model="storeEmail" type="email" class="validate green-text">
+                        <input id="email" ng-model="email" type="email" class="validate green-text">
                         <label for="email">Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="password" ng-model="storePassword" type="password" class="validate green-text">
+                        <input id="password" ng-model="password" type="password" class="validate green-text">
                         <label for="password">Password</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="confirm_password" type="password" class="validate green-text">
+                        <input id="confirm_password" ng-model="confirmPass" type="password" class="validate green-text">
                         <label for="confirm_password">Confirm Password</label>
                     </div>
                 </div <div class="row">
@@ -59,7 +59,7 @@
             </div>
             <div id="staffList" class="col s6 offset-s1">
             <h4>Staff List</h4>
-                <table>
+                <table class="hoverable">
                     <thead>
                         <tr>
                             <th data-field="first_name">First Name</th>
@@ -68,20 +68,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Alvin</td>
-                            <td>Eclair</td>
-                            <td>$0.87</td>
-                        </tr>
-                        <tr>
-                            <td>Alan</td>
-                            <td>Jellybean</td>
-                            <td>$3.76</td>
-                        </tr>
-                        <tr>
-                            <td>Jonathan</td>
-                            <td>Lollipop</td>
-                            <td>$7.00</td>
+                        <tr ng-repeat="staff in staffList track by $index" >
+                            <td>{{staff.firstName}}</td>
+                            <td>{{staff.lastName}}</td>
+                            <td >{{staff.email}}</td>
                         </tr>
                     </tbody>
                 </table>

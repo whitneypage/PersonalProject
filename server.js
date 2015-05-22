@@ -166,7 +166,13 @@ app.post('/api/auth/location', function(req, res, next) {
 
 
 
-
+app.get('/api/:locationId', function(req, res) {
+	User
+	.find({ locationId: req.params.locationId }, 'firstName lastName email', function(error, data) {
+		return res.json(data);
+	})
+	
+})
 
 
 
