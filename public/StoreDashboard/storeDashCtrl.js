@@ -2,6 +2,7 @@ var app = angular.module('serveStats');
 
 app.controller('storeDashCtrl', function($scope, mainService) {
 	$scope.staffList = [];
+	$scope.locationId;
 	
 
 	 $scope.createUser = function() {
@@ -50,9 +51,8 @@ app.controller('storeDashCtrl', function($scope, mainService) {
 	 $scope.getServerList();
 
      $scope.localId = function() {
-     	mainService.getLocalId()
-     	});
-     } 
+     	$scope.locationId = mainService.getLocalId();
+     };
 
      $scope.localId();
 

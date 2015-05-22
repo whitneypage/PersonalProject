@@ -7,7 +7,7 @@ app.service('mainService', function($http, $q) {
     this.userName;
     this.locationId;
 
-// Create User
+    // Create User
     this.createUser = function(newUser) {
         console.log('ms-newuser', newUser)
         var deferred = $q.defer();
@@ -18,7 +18,7 @@ app.service('mainService', function($http, $q) {
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
                 email: newUser.email,
-                password: newUser.password, 
+                password: newUser.password,
                 locationId: newUser.locationId
             }
         }).then(function(response) {
@@ -28,7 +28,7 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     };
 
-//Login User
+    //Login User
     this.loginUser = function(email, password) {
         console.log('emailpass', email, password)
         var deferred = $q.defer();
@@ -50,7 +50,7 @@ app.service('mainService', function($http, $q) {
         })
         return deferred.promise;
     };
-// Post Tips Data
+    // Post Tips Data
     this.sendTipsData = function(tipsData) {
         var deferred = $q.defer();
         $http({
@@ -67,24 +67,24 @@ app.service('mainService', function($http, $q) {
     };
 
 
-// Display User Name 
+    // Display User Name 
     this.getUserName = function() {
-        return this.userName;
-    }
-// Getting Tip Data
+            return userName;
+        }
+        // Getting Tip Data
     this.getTipsData = function() {
         var deferred = $q.defer();
         $http({
             method: 'GET',
             url: '/api/tips/' + userId
         }).then(function(response) {
-        	deferred.resolve(response.data.tips)
+            deferred.resolve(response.data.tips)
         });
         return deferred.promise;
     }
 
 
-// Store Register
+    // Store Register
 
     this.createStore = function(newStore) {
         console.log('ms-newStore', newStore)
@@ -93,11 +93,11 @@ app.service('mainService', function($http, $q) {
             method: 'POST',
             url: '/api/register/location',
             data: {
-               	storeName: newStore.storeName,
-            	storeNumber: newStore.storeNumber,
-            	ownerName: newStore.ownerName,
-            	storeEmail: newStore.storeEmail,
-            	password: newStore.storePassword
+                storeName: newStore.storeName,
+                storeNumber: newStore.storeNumber,
+                ownerName: newStore.ownerName,
+                storeEmail: newStore.storeEmail,
+                password: newStore.storePassword
             }
         }).then(function(response) {
             console.log(response.data);
@@ -106,7 +106,7 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     };
 
-// Store Login
+    // Store Login
 
     this.loginStore = function(email, password) {
         console.log('emailpass', email, password)
@@ -119,8 +119,8 @@ app.service('mainService', function($http, $q) {
                 password: password
             }
         }).then(function(response) {
-        	this.locationId = response.data._id;
-        	console.log(this.locationId);
+            this.locationId = response.data._id;
+            console.log(this.locationId);
             console.log("loginStore", response.data);
             deferred.resolve(response.data);
         }).catch(function(err) {
@@ -130,22 +130,23 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     };
 
-// Get Server List from Location
-	
-	   this.getServerList = function() {
+    // Get Server List from Location
+
+    this.getServerList = function() {
         var deferred = $q.defer();
         $http({
             method: 'GET',
             url: '/api/' + locationId
         }).then(function(response) {
-        	deferred.resolve(response.data)
+            deferred.resolve(response.data)
         });
         return deferred.promise;
     }
- 	
- 	this.getLocalId = function() {
- 		return this.locationId
- 	}
+
+    
+    this.getLocalId = function() {
+        return locationId
+    }
 
 
 
