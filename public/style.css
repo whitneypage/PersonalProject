@@ -38,6 +38,7 @@ p {
 .loginForm {
     padding-top: 15px;
 }
+
 /* label focus color */
 
 .input-field input[type=text]:focus + label {
@@ -93,6 +94,13 @@ p {
 	font-size: 30px;
 }
 
+#UserReg-form {
+	padding-top: 70px;
+}
+
+#staffList {
+	padding-top: 70px;
+}
 
 
 
