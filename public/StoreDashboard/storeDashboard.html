@@ -4,9 +4,9 @@
             <div class="nav-wrapper green">
                 <a class="brand-logo" href="/#/">LOGIN</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="sass.html">Sass</a></li>
-                    <li><a href="components.html">Components</a></li>
-                    <li><a href="javascript.html">JavaScript</a></li>
+                    <li><a href="/#/storeDashboard">Dashboard</a></li>
+                    <li><a href="/#/storeStats">Store Stats</a></li>
+                    <li><a href="javascript.html">Server Stats</a></li>
                 </ul>
             </div>
         </nav>
@@ -58,7 +58,15 @@
             </form>
             </div>
             <div id="staffList" class="col s6 offset-s1">
-            <h4>Staff List</h4>
+                <h4>Staff List</h4>
+                </br>
+                <form>
+                    <div class="input-field">
+                        <input id="search" type="search" ng-model="search" required>
+                        <label for="search"><i class="mdi-action-search"></i></label>
+                        <i class="mdi-navigation-close"></i>
+                    </div>
+                </form>
                 <table class="hoverable">
                     <thead>
                         <tr>
@@ -68,10 +76,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="staff in staffList track by $index" >
+                        <tr ng-repeat="staff in staffList track by $index | filter:search">
                             <td>{{staff.firstName}}</td>
                             <td>{{staff.lastName}}</td>
-                            <td >{{staff.email}}</td>
+                            <td>{{staff.email}}</td>
                         </tr>
                     </tbody>
                 </table>

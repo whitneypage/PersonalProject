@@ -175,6 +175,28 @@ app.get('/api/:locationId', function(req, res) {
 })
 
 
+app.post('/api/:locationId', function(req, res) {
+	Location.findByIdAndUpdate(
+    	req.params.locationId,
+    	{$push: {sales: req.body}},
+    	{safe: true},
+    	function(err, model) {
+    		if (!err) res.status(200).json(model);
+    		console.log(err);
+   		 }
+    )
+
+})
+
+app.get('/api/location/sales', function(req, res) {
+        Location.find({}, 'sales', function(error, data) {
+		return res.json(data);
+	})
+
+        
+});
+
+
 
 
 

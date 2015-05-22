@@ -11,7 +11,7 @@ var locationSchema = new mongoose.Schema ({
 	 sales: [
 	 	{
 	 		date: Date,
-	 		amount: Number
+	 		amount: String
 	 	}
 	 ]
 

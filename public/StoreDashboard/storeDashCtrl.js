@@ -13,12 +13,13 @@ app.controller('storeDashCtrl', function($scope, mainService) {
 	            password: $scope.password,
 	            locationId: $scope.locationId
 	        }
-	        mainService.createUser(newUser).then(function(data) {
-                $scope.staffList.push({
+	        var newServerObj = {
                 	firstName: $scope.firstName,
                 	lastName: $scope.lastName,
                 	email: $scope.email
-                })
+                }
+	        mainService.createUser(newUser).then(function(data) {
+                $scope.staffList.unshift(newServerObj);
 	            console.log("RegUser", data);
 	        
 	        });
@@ -27,7 +28,6 @@ app.controller('storeDashCtrl', function($scope, mainService) {
 	        $scope.lastName = "";
 	        $scope.email = "";
 	        $scope.password = "";
-	        $scope.locationId = "";
 	        $scope.confirmPass = "";
 	    }; //ends createUser
 
