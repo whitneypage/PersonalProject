@@ -2,44 +2,30 @@ var app = angular.module('serveStats');
 
 app.controller('TipsCtrl', function($scope, mainService) {
  
+ $scope.tipsList = [];
+
   
-	var tipsData = [
-		{
-			"date": "",
-			"amount": ""
-		}
-
-	]
-
-	var columnDefs = [
-		{ name: 'date'},
-		{ name: 'amount'}
-	]
-
-
-    $scope.gridOpts = {
-    	columnDefs: columnDefs,
-    	data: tipsData
-    }
 	
     var monthNames = ["January", "February", "March", "April", "May", "June",
   		"July", "August", "September", "October", "November", "December"
 	];
 
-	$scope.addData = function() {
+	$scope.addTipData = function() {
+		 var amount = $scope.tipAmount;
+		  console.log($scope.date);
+          console.log($scope.tipAmount);
+
 		var date = new Date($scope.date);
         var month = monthNames[date.getMonth()];
 		var day = date.getDate();
 		var year = date.getFullYear();
 		var newDate = month + " " + day + ", " + year;
+		console.log(newDate);
 
-		tipsData.push({
-			"date": newDate,
-			"amount": $scope.amount
+		$scope.tipsList.unshift({
+			date: newDate,
+			amount: amount
 		});
-
-
-        var amount = $scope.amount;
 
 		var tip = {
 			date: newDate,
@@ -49,7 +35,7 @@ app.controller('TipsCtrl', function($scope, mainService) {
 		mainService.sendTipsData(tip).then(function(data) {
 			console.log(data);
 			$scope.date= "";
-		    $scope.amount= "";
+		    $scope.tipAmount= "";
 		});
 
 		
@@ -65,9 +51,9 @@ app.controller('TipsCtrl', function($scope, mainService) {
 					"amount": ""
 				}
 
-				tipObj.date = data[i].tipDate;
+				tipObj.date = data[i].date;
 				tipObj.amount = data[i].tipAmount;
-				tipsData.unshift(tipObj);
+				$scope.tipsList.unshift(tipObj);
 
 			};
 			

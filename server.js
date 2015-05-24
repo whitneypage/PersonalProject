@@ -14,8 +14,8 @@ var mongoUri = 'mongodb://localhost:27017/PP'
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(session ({
-	secret: '1343343334'
+app.use(session({
+    secret: '1343343334'
 }))
 
 
@@ -42,34 +42,47 @@ mongoose.connect(mongoUri, function(err) {
 
 
 passport.use(new LocalStrategy(
-  function(username, password, done) {
+    function(username, password, done) {
 
-  	console.log("inLocal", username);
+        console.log("inLocal", username);
 
-  	Location.findOne({ storeEmail: username }, function(err, location) {
-      if (err) { return done(err); }
-      if (location) {
-      	 if (!location.comparePassword(password)) {
-        	return done(null, false, { message: 'Incorrect password.' });
-      	}
-     	console.log("location found", location);
-      	return done(null, location);
-      }
-     else {
-     	  User.findOne({ email: username }, function(err, user) {
-      			if (err) { return done(err); }
-      			if (!user) {
-        			return done(null, false, { message: 'Incorrect username.' });
-     			 }
-      			if (!user.comparePassword(password)) {
-        			return done(null, false, { message: 'Incorrect password.' });
-      			}
-      			console.log("user found", user);
-      			return done(null, user);
-    	});
-     }
+        Location.findOne({
+            storeEmail: username
+        }, function(err, location) {
+            if (err) {
+                return done(err);
+            }
+            if (location) {
+                if (!location.comparePassword(password)) {
+                    return done(null, false, {
+                        message: 'Incorrect password.'
+                    });
+                }
+                console.log("location found", location);
+                return done(null, location);
+            } else {
+                User.findOne({
+                    email: username
+                }, function(err, user) {
+                    if (err) {
+                        return done(err);
+                    }
+                    if (!user) {
+                        return done(null, false, {
+                            message: 'Incorrect username.'
+                        });
+                    }
+                    if (!user.comparePassword(password)) {
+                        return done(null, false, {
+                            message: 'Incorrect password.'
+                        });
+                    }
+                    console.log("user found", user);
+                    return done(null, user);
+                });
+            }
+        })
     }
-  )}
 ));
 
 
@@ -81,119 +94,133 @@ app.use(passport.session());
 
 
 var isAuthed = function(req, res, next) {
-	if(!req.isAuthenticated()) {
-		return res.status(403).end();
-	}
-	return next();
+    if (!req.isAuthenticated()) {
+        return res.status(403).end();
+    }
+    return next();
 }
 
 
 passport.serializeUser(function(user, done) {
-	done(null, user);
+    done(null, user);
 })
 passport.deserializeUser(function(obj, done) {
-	done(null, obj);
+    done(null, obj);
 })
 
-app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname + '/public'));
 
 
 
-//User
+//Login User
 
 app.post('/api/auth', function(req, res, next) {
-	console.log('server req made it', req.user);
-	passport.authenticate('local', function(err, user, info) {
-	return res.json(user);
-	}) (req, res, next);
+    console.log('server req made it', req.user);
+    passport.authenticate('local', function(err, user, info) {
+        return res.json(user);
+    })(req, res, next);
 });
 
+//Creates new User
 app.post('/api/register', function(req, res) {
-	var newUser = new User(req.body);
-	newUser.save(function(err, user) {
-		if (err) {
-			return res.status(500).end();
-		}
+    var newUser = new User(req.body);
+    newUser.save(function(err, user) {
+        if (err) {
+            return res.status(500).end();
+        }
 
-		return res.json(user);
-	})
+        return res.json(user);
+    })
 })
 
-
+// add Tip Data to the User
 app.post('/api/tips/:userId', function(req, res) {
     console.log("req.user", req.body);
     User.findByIdAndUpdate(
-    	req.params.userId,
-    	{$push: {tips: req.body}},
-    	{safe: true},
-    	function(err, model) {
-    		if (!err) res.status(200).json(model);
-    		console.log(err);
-   		 }
+        req.params.userId, {
+            $push: {
+                tips: req.body
+            }
+        }, {
+            safe: true
+        },
+        function(err, model) {
+            if (!err) res.status(200).json(model);
+            console.log(err);
+        }
     )
 
 });
-
+// getting Tip Data 
 app.get('/api/tips/:userId', function(req, res) {
-	User
-	.findOne({ _id: req.params.userId})
-	.exec().then(function(data) {
-		return res.json(data);
-	})
+    User
+        .findOne({
+            _id: req.params.userId
+        })
+        .exec().then(function(data) {
+            return res.json(data);
+        })
 });
 
 
 
-// Store
+// Create Store
 
 app.post('/api/register/location', function(req, res) {
-	var newStore = new Location(req.body);
-	newStore.save(function(err, user) {
-		console.log("Post", user);
-		if (err) {
-			return res.status(500).send(err);
-		}
-		return res.json(user);
-	})
+    var newStore = new Location(req.body);
+    newStore.save(function(err, user) {
+        console.log("Post", user);
+        if (err) {
+            return res.status(500).send(err);
+        }
+        return res.json(user);
+    })
 })
 
+// Login Location
 app.post('/api/auth/location', function(req, res, next) {
-	console.log('server req made it', req.body);
-	passport.authenticate('local', function(err, user, info) {
-	return res.json(user);
-	}) (req, res, next);
+    console.log('server req made it', req.body);
+    passport.authenticate('local', function(err, user, info) {
+        return res.json(user);
+    })(req, res, next);
 });
 
 
-
+ // Get Server List from LocationID 
 app.get('/api/:locationId', function(req, res) {
-	User
-	.find({ locationId: req.params.locationId }, 'firstName lastName email', function(error, data) {
-		return res.json(data);
-	})
-	
+    User
+        .find({
+            locationId: req.params.locationId
+        }, 'firstName lastName email', function(error, data) {
+            return res.json(data);
+        })
+
 })
 
-
+// Add Sales Data to the Location
 app.post('/api/:locationId', function(req, res) {
-	Location.findByIdAndUpdate(
-    	req.params.locationId,
-    	{$push: {sales: req.body}},
-    	{safe: true},
-    	function(err, model) {
-    		if (!err) res.status(200).json(model);
-    		console.log(err);
-   		 }
-    )
+        Location.findByIdAndUpdate(
+            req.params.locationId, {
+                $push: {
+                    sales: req.body
+                }
+            }, {
+                safe: true
+            },
+            function(err, model) {
+                if (!err) res.status(200).json(model);
+                console.log(err);
+            }
+        )
 
-})
-
-app.get('/api/location/sales', function(req, res) {
-        Location.find({}, 'sales', function(error, data) {
-		return res.json(data);
-	})
-
-        
+    })
+    // Get the Locations
+app.get('/api/location', function(req, res) {
+    Location.find({}, function(error, data) {
+        console.log("sales", data)
+        console.log("error", error)
+        return res.json(data);
+    })
 });
 
 
@@ -201,15 +228,9 @@ app.get('/api/location/sales', function(req, res) {
 
 
 
- // app.post('/api/tips/:userId', function(req, res) {
- //        User.findByIdAndUpdate(req.params.userId, req.body, function(err, result) {
- //            if (err) return res.status(500).send(err);
- //            res.send(result);
- //        });
 
-
-
-
-
-
-
+// app.post('/api/tips/:userId', function(req, res) {
+//        User.findByIdAndUpdate(req.params.userId, req.body, function(err, result) {
+//            if (err) return res.status(500).send(err);
+//            res.send(result);
+//        });

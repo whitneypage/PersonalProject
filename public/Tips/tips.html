@@ -1,63 +1,76 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#/">ServeStats</a>
+<div class="tipsContainer">
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper green">
+                <a class="brand-logo" href="/#/">LOGIN</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="/#/dashboard">Dashboard</a></li>
+                    <li class="active"><a href="/#/tips">Tips</a></li>
+                    <li><a href="javascript.html">Store Stats</a></li>
+                </ul>
+            </div>
+        </nav>
     </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Link</a></li>
-        <li class="active"><a href="#/tips">Tips<span class="sr-only">(current)</span></a></li>
-        
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-      </ul>
+    <div class="tipsDash">
+        <div class="row">
+            <form id="tipForm" class="col s5">
+                <div class="row">
+                    <h4><i class="mdi-content-add"></i>Add New Tips</h4>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <input type="date" ng-model="date" class="datepicker">
+                        <label for="date">Date</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <input id="tipAmount" ng-model="tipAmount" type="text" class="validate green-text">
+                        <label for="tipAmount">Tip Amount</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s2 offset-s10">
+                        <button class="btn-floating btn-large waves-effect waves-light green" type="submit" name="action" ng-click="addTipData()">
+                            <i class="mdi-navigation-arrow-forward"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div id="tipList" class="col s6 offset-s1">
+                <form>
+                    <div class="row">
+                        <h4>Tips</h4>
+                    </div>
+                    <div class="input-field">
+                        <input id="search" type="search" ng-model="search" required>
+                        <label for="search"><i class="mdi-action-search"></i></label>
+                        <i class="mdi-navigation-close"></i>
+                    </div>
+                </form>
+                <table class="hoverable">
+                    <thead>
+                        <tr>
+                            <th data-field="first_name">Date</th>
+                            <th data-field="last_name">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="tip in tipsList track by $index | filter:search">
+                            <td>{{tip.date}}</td>
+                            <td>{{tip.amount}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
-</nav>
-
-
-<form class="form-inline" on-click="addTipData()">
-    <div class="form-group">
-        <label>Date</label>
-        <input type="date" class="form-control" ng-model="date" placeholder="Date">
-    </div>
-    <div class="form-group">
-        <label>$</label>
-        <input type="text" class="form-control" ng-model="amount"placeholder="Enter Amount">
-    </div>
-    <div class="form-group">
-        <button type="submit" class="form-control" ng-click="addData()">Submit</button>
-    </div>
-</form>
-<!-- 
-<div id="grid" ui-grid="gridOpts" ui-grid-edit class="grid"></div> -->
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
+<script>
+$('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year
+    format: 'mmmm d, yyyy',
+    formatSubmit: 'yyyy-mmmm-d'
+});
+</script>

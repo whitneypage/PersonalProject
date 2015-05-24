@@ -130,7 +130,7 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     };
 
-    // Get Server List from Location
+    // Get Server List from LocationID
 
     this.getServerList = function() {
         var deferred = $q.defer();
@@ -148,7 +148,20 @@ app.service('mainService', function($http, $q) {
         return locationId
     }
 
+// get Location Data 
+     this.locationData = function() {
+     	   var deferred = $q.defer();
+        $http({
+            method: 'GET',
+            url: '/api/location'
+        }).then(function(response) {
+        	console.log("localData", response.data);
+            deferred.resolve(response.data)
+        });
+        return deferred.promise;
+    }
 
+    
 
 
 

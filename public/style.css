@@ -94,11 +94,11 @@ p {
 	font-size: 30px;
 }
 
-#UserReg-form {
+#UserReg-form, #tipForm {
 	padding-top: 70px;
 }
 
-#staffList {
+#staffList, #tipList {
 	padding-top: 70px;
 }
 

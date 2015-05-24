@@ -14,14 +14,14 @@ var userSchema = new mongoose.Schema ({
     },
     tips: [ 
         {
-            tipDate: Date,
-            tipAmount: Number 
+            tipDate: { type: Date, required: true},
+            tipAmount: { type: String, required: true}
         }
     ], 
     sales: [
         {
-            date: Date,
-            amount: Number
+            date: { type: Date, required: true},
+            amount: { type: Date, required: true}
         }
     ]
 
