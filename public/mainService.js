@@ -148,7 +148,7 @@ app.service('mainService', function($http, $q) {
         return locationId
     }
 
-// get Location Data 
+// get Location Data no
      this.locationData = function() {
      	   var deferred = $q.defer();
         $http({

@@ -44,7 +44,7 @@ app.controller('storeDashCtrl', function($scope, mainService) {
 	            serverObj.email = data[i].email;
 	            $scope.staffList.unshift(serverObj);
 			};
-			console.log(data);
+			
 	    })
 	};
 

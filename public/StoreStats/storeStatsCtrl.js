@@ -3,17 +3,42 @@ var app = angular.module('serveStats');
 app.controller('storeStatsCtrl', function($scope, mainService) {
 
 $scope.locationData;
-
+$scope.avgArr = [];
 
     $scope.allLocalData = function() {
         mainService.locationData().then(function(data) {
-            console.log(data);
-            $scope.locationData = data;
-        })
-    }
+			var salesArr;
+			var totalAmount = 0;
+			var AvgSales;
+			for (var i = 0; i < data.length; i++) {
 
-$scope.allLocalData();
+				var avgObj = {
+        			storeName: data[i].storeName.replace(/\b./g, function(m){ return m.toUpperCase(); }),
+        			storeNumber: data[i].storeNumber,
+        			salesAvg: 0
+        		}
+    			
+
+				salesArr = data[i].sales;
+				console.log(salesArr);
+
+				for (var i = 0; i < salesArr.length; i++) {
+            		var amount = salesArr[i].amount;
+            		amount  = parseFloat(amount);
+            		totalAmount += amount;
+            	}
+            	AvgSales = totalAmount/salesArr.length;
+          		console.log(AvgSales.toFixed(2));
 
 
+            	avgObj.salesAvg = AvgSales.toFixed(2);
+            	$scope.avgArr.push(avgObj);
+            	console.log(avgObj);
+            }
+		});
+           
+    };
+
+    $scope.allLocalData();
 
 });

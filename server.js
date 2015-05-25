@@ -217,8 +217,6 @@ app.post('/api/location/:locationId', function(req, res) {
 app.get('/api/locations', function(req, res) {
 	console.log("hit api location")
     Location.find({}, function(error, data) {
-        console.log("Location", data)
-        console.log("LocationError", error)
         return res.json(data);
     })
 });
