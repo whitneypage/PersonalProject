@@ -14,7 +14,7 @@ var userSchema = new mongoose.Schema ({
     },
     tips: [ 
         {
-            tipDate: { type: Date, required: true},
+            tipDate: { type: Date, required: true, unique: true},
             tipAmount: { type: String, required: true}
         }
     ], 
