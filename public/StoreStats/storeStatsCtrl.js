@@ -2,6 +2,7 @@ var app = angular.module('serveStats');
 
 app.controller('storeStatsCtrl', function($scope, mainService) {
 
+	$scope.nums = [1, 2, 3, 4, 5];
     $scope.locationData;
     $scope.avgArr = [];
 
@@ -29,10 +30,15 @@ app.controller('storeStatsCtrl', function($scope, mainService) {
                 AvgSales = totalAmount / salesArr.length;
                 avgObj.salesAvg = AvgSales.toFixed(2);
                 $scope.avgArr.push(avgObj);
-                console.log($scope.avgArr);
                 totalAmount = 0;
             }
+            var compareNumbers = function (a, b) {
+       			return a.salesAvg - b.salesAvg;
+    		}
+            $scope.avgArr = $scope.avgArr.sort(compareNumbers).reverse();
+            console.log($scope.avgArr);
         })
+	
 
     };
 

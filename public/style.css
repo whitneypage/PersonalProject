@@ -94,13 +94,19 @@ p {
 	font-size: 30px;
 }
 
-#UserReg-form, #tipForm {
+#UserReg-form, #tipForm, .storeStats {
 	padding-top: 70px;
 }
 
 #staffList, #tipList {
 	padding-top: 70px;
 }
+
+.collapsible-header {
+	font-size: 33px;
+}
+
+
 
 
 
