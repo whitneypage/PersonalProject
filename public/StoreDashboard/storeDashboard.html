@@ -2,7 +2,7 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper green">
-                <a class="brand-logo" href="/#/">LOGIN</a>
+                <a class="brand-logo" href="/#/">Login</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li class="active"><a href="/#/storeDashboard">Dashboard</a></li>
                     <li><a href="/#/storeStats">Store Stats</a></li>
@@ -50,13 +50,16 @@
                         <input id="confirm_password" ng-model="confirmPass" type="password" class="validate green-text">
                         <label for="confirm_password">Confirm Password</label>
                     </div>
-                </div> <div class="row">
-                <div class="col s2 offset-s10">
-                    <button class="btn-floating btn-large waves-effect waves-light green" type="submit" name="action" ng-click="createUser()">
-                        <i class="mdi-navigation-arrow-forward"></i>
-                    </button>
+                </div>
+                <div class="row">
+                    <div class="col s2 offset-s10">
+                        <button class="btn-floating btn-large waves-effect waves-light green" type="submit" name="action" ng-click="createUser()">
+                            <i class="mdi-navigation-arrow-forward"></i>
+                        </button>
+                    </div>
+                </div>
             </form>
-            </div>
+            
             <div id="staffList" class="col s6 offset-s1">
                 <h4>Staff List</h4>
                 </br>
@@ -86,3 +89,4 @@
             </div>
         </div>
     </div>
+</div>

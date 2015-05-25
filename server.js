@@ -187,7 +187,7 @@ app.post('/api/auth/location', function(req, res, next) {
 
 
  // Get Server List from LocationID 
-app.get('/api/:locationId', function(req, res) {
+app.get('/api/location/:locationId', function(req, res) {
     User
         .find({
             locationId: req.params.locationId
@@ -198,7 +198,7 @@ app.get('/api/:locationId', function(req, res) {
 })
 
 // Add Sales Data to the Location
-app.post('/api/:locationId', function(req, res) {
+app.post('/api/location/:locationId', function(req, res) {
         Location.findByIdAndUpdate(
             req.params.locationId, {
                 $push: {
@@ -212,13 +212,13 @@ app.post('/api/:locationId', function(req, res) {
                 console.log(err);
             }
         )
-
-    })
+})
     // Get the Locations
-app.get('/api/location', function(req, res) {
+app.get('/api/locations', function(req, res) {
+	console.log("hit api location")
     Location.find({}, function(error, data) {
-        console.log("sales", data)
-        console.log("error", error)
+        console.log("Location", data)
+        console.log("LocationError", error)
         return res.json(data);
     })
 });

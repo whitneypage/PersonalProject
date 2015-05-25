@@ -4,14 +4,13 @@ app.controller('TipsCtrl', function($scope, mainService) {
  
  $scope.tipsList = [];
 
-  
-	
     var monthNames = ["January", "February", "March", "April", "May", "June",
   		"July", "August", "September", "October", "November", "December"
 	];
 
 	$scope.addTipData = function() {
 		 var amount = $scope.tipAmount;
+
 		  console.log($scope.date);
           console.log($scope.tipAmount);
 

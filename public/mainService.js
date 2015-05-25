@@ -136,7 +136,7 @@ app.service('mainService', function($http, $q) {
         var deferred = $q.defer();
         $http({
             method: 'GET',
-            url: '/api/' + locationId
+            url: '/api/location/' + locationId
         }).then(function(response) {
             deferred.resolve(response.data)
         });
@@ -153,7 +153,7 @@ app.service('mainService', function($http, $q) {
      	   var deferred = $q.defer();
         $http({
             method: 'GET',
-            url: '/api/location'
+            url: '/api/locations'
         }).then(function(response) {
         	console.log("localData", response.data);
             deferred.resolve(response.data)
