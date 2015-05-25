@@ -28,17 +28,18 @@ $scope.avgArr = [];
             		totalAmount += amount;
             	}
             	AvgSales = totalAmount/salesArr.length;
-          		console.log(AvgSales.toFixed(2));
 
-
-            	avgObj.salesAvg = AvgSales.toFixed(2);
+                avgObj.salesAvg = AvgSales.toFixed(2);
             	$scope.avgArr.push(avgObj);
-            	console.log(avgObj);
             }
-		});
+		})
            
     };
 
+
+
+
+
     $scope.allLocalData();
 
-});
+}); // ends controller 
