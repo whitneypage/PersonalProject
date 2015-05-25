@@ -10,7 +10,7 @@ var locationSchema = new mongoose.Schema ({
 	 password: { type: String, required: true },
 	 sales: [
 	 	{
-	 		date: Date,
+	 		date: { type: Date, unique: true },
 	 		amount: String
 	 	}
 	 ]
