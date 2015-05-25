@@ -44,6 +44,7 @@ app.controller('TipsCtrl', function($scope, mainService) {
 
 
 	$scope.getTipsData = function() {
+
 		mainService.getTipsData().then(function(data) {
 			console.log(data);
 			for (var i = 0; i < data.length; i++) {
@@ -51,8 +52,14 @@ app.controller('TipsCtrl', function($scope, mainService) {
 					"date": "",
 					"amount": ""
 				}
+				var date = new Date(data[i].tipDate);
+       			var month = monthNames[date.getMonth()];
+				var day = date.getDate();
+				var year = date.getFullYear();
+				var newDate = month + " " + day + ", " + year;
+				console.log(newDate);
 
-				tipObj.date = data[i].date;
+				tipObj.date = newDate;
 				tipObj.amount = data[i].tipAmount;
 				$scope.tipsList.unshift(tipObj);
 
