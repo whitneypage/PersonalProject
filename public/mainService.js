@@ -7,6 +7,7 @@ app.service('mainService', function($http, $q) {
     this.userName;
     this.userLocationId;
     this.locationId;
+    this.loggedIn;
 
     // Create User
     this.createUser = function(newUser) {
@@ -29,6 +30,7 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     };
 
+
     //Login User
     this.loginUser = function(email, password) {
         console.log('emailpass', email, password)
@@ -42,11 +44,13 @@ app.service('mainService', function($http, $q) {
             }
         }).then(function(response) {
             this.userLocationId = response.data.locationId;
-            console.log(userLocationId);
             this.userId = response.data._id;
             this.userName = response.data.firstName;
             console.log("USER ID", this.userId, this.userName);
+            this.loggedIn = true;
+            console.log("loggedIn", this.loggedIn)
             deferred.resolve(response.data);
+
         }).catch(function(err) {
             console.log('error logging in');
             deferred.reject(err);
@@ -54,15 +58,10 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     };
 
-    //if User is logged in 
-    this.userLoggedIn = function() {
-        if (this.userLocationId) {
-            return true
-        }
-        else {
-            return false
-        }
-    }
+
+   this.userLoggedIn = function() {
+    return loggedIn
+   }
 
 
 
@@ -135,6 +134,7 @@ app.service('mainService', function($http, $q) {
                 password: password
             }
         }).then(function(response) {
+            this.loggedIn = false;
             this.locationId = response.data._id;
             console.log(this.locationId);
             console.log("loginStore", response.data);

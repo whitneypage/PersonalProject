@@ -245,6 +245,13 @@ app.get('/api/users/:locationId', function(req, res) {
     })
 });
 
+//removing a location
+app.delete('/api/remove/:locationId', function(req, res){
+	Location.remove({_id: req.params.locationId}, function(err, data) {
+		  if (err) return res.status(500).send(err);
+            res.send(data);
+        });
+})
 
 // app.post('/api/tips/:userId', function(req, res) {
 //        User.findByIdAndUpdate(req.params.userId, req.body, function(err, result) {

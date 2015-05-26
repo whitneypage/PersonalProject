@@ -4,6 +4,8 @@ app.controller('storeStatsCtrl', function($scope, mainService) {
 
     $scope.locationData;
     $scope.avgArr = [];
+    $scope.navBar = true;
+    
 
 
     var compareNumbers = function (a, b) {
@@ -46,22 +48,17 @@ app.controller('storeStatsCtrl', function($scope, mainService) {
 
     };
 
-    
-    $scope.userLoggedIn = mainService.userLoggedIn();
-    console.log($scope.userLoggedIn);	
-    if ($scope.userLoggedIn) {
-    	$scope.userNavBar = true;
-    	$scope.navBar = false 
-    } else {
-    	$scope.userNavBar = false;
-    	$scope.navBar = true;
-    }
+var userLoggedIn = mainService.userLoggedIn();
+console.log(userLoggedIn);
+
+$scope.navView = function() {
+ if(userLoggedIn) {
+ 	$scope.navBar = false;
+ }
+};
 
 
-
-
-
-
+$scope.navView();
 
 
     $scope.allLocalData();

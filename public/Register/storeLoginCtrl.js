@@ -4,6 +4,7 @@ app.controller('storeLoginCtrl', function($scope, mainService, $location) {
 
 
     $scope.createStore = function() {
+
         var newStore = {
             storeName: $scope.storeName,
             storeNumber: $scope.storeNumber,
@@ -30,8 +31,12 @@ app.controller('storeLoginCtrl', function($scope, mainService, $location) {
         });
     };
 
+    if ($scope.storePassword !== $scope.password) {
+        $scope.error = "Passwords do not match"
 
-
+    } else {
+        var finalPassword = $scope.storePassword
+    }
 
 
 
