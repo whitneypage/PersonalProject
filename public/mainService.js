@@ -41,8 +41,8 @@ app.service('mainService', function($http, $q) {
                 password: password
             }
         }).then(function(response) {
-        	this.userLocationId = response.data.locationId;
-        	console.log(userLocationId);
+            this.userLocationId = response.data.locationId;
+            console.log(userLocationId);
             this.userId = response.data._id;
             this.userName = response.data.firstName;
             console.log("USER ID", this.userId, this.userName);
@@ -53,6 +53,19 @@ app.service('mainService', function($http, $q) {
         })
         return deferred.promise;
     };
+
+    //if User is logged in 
+    this.userLoggedIn = function() {
+        if (this.userLocationId) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+
+
+
     // Post Tips Data
     this.sendTipsData = function(tipsData) {
         var deferred = $q.defer();
@@ -146,36 +159,51 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     }
 
-    
+
     this.getLocalId = function() {
         return locationId
     }
 
-// get Location Data no
-     this.locationData = function() {
-     	   var deferred = $q.defer();
+    // get Location Data no
+    this.locationData = function() {
+        var deferred = $q.defer();
         $http({
             method: 'GET',
             url: '/api/locations'
         }).then(function(response) {
-        	console.log("localData", response.data);
+            console.log("localData", response.data);
             deferred.resolve(response.data)
         });
         return deferred.promise;
     }
 
-    
-     this.userDatabyLoc = function() {
-     	   var deferred = $q.defer();
+    var loc = function() {
+        if (this.locationId) {
+            loc = locationId
+        }
+        if (this.userLocationId) {
+            loc = userLocationId
+        }
+        return loc;
+        console.log("locVar", loc);
+    };
+
+
+
+
+
+    this.userDatabyLoc = function() {
+        var id = loc();
+        var deferred = $q.defer();
         $http({
             method: 'GET',
-            url: '/api/users/' + userLocationId
+            url: '/api/users/' + id
         }).then(function(response) {
-        	console.log("UserbyLocationData", response.data);
+            console.log("UserbyLocationData", response.data);
             deferred.resolve(response.data)
         });
         return deferred.promise;
-    }
+    };
 
 
 
@@ -189,7 +217,7 @@ app.service('mainService', function($http, $q) {
 
 
     // this.editTip = function() {
-    // 	var deferred = $q.defer();
+    //  var deferred = $q.defer();
     //     $http({
     //         method: 'POST',
     //         url: '/api/tips/' + userId,

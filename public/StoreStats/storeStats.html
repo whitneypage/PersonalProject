@@ -1,5 +1,5 @@
 <div class="storeStatsContainer">
-    <div class="navbar-fixed">
+    <div class="navbar-fixed" ng-if="navBar">
         <nav>
             <div class="nav-wrapper green">
                 <a class="brand-logo" href="/#/">Login</a>
@@ -7,6 +7,18 @@
                     <li><a href="/#/storeDashboard">Dashboard</a></li>
                     <li class="active"><a href="/#/storeStats">Store Stats</a></li>
                     <li><a href="/#/dashboard">Server Stats</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+     <div class="navbar-fixed" ng-if="userNavBar">
+        <nav>
+            <div class="nav-wrapper green">
+                <a class="brand-logo" href="/#/">Login</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="/#/dashboard">Dashboard</a></li>
+                    <li class="active"><a href="/#/storeStats">Store Stats</a></li>
+                    <li><a href="/#/tips">Tips</a></li>
                 </ul>
             </div>
         </nav>
