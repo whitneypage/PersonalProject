@@ -2,7 +2,6 @@ var app = angular.module('serveStats');
 
 app.controller('storeStatsCtrl', function($scope, mainService) {
 
-	$scope.nums = [1, 2, 3, 4, 5];
     $scope.locationData;
     $scope.avgArr = [];
 

@@ -5,6 +5,7 @@ app.service('mainService', function($http, $q) {
 
     this.userId;
     this.userName;
+    this.userLocationId;
     this.locationId;
 
     // Create User
@@ -40,6 +41,8 @@ app.service('mainService', function($http, $q) {
                 password: password
             }
         }).then(function(response) {
+        	this.userLocationId = response.data.locationId;
+        	console.log(userLocationId);
             this.userId = response.data._id;
             this.userName = response.data.firstName;
             console.log("USER ID", this.userId, this.userName);
@@ -162,6 +165,25 @@ app.service('mainService', function($http, $q) {
     }
 
     
+     this.userDatabyLoc = function() {
+     	   var deferred = $q.defer();
+        $http({
+            method: 'GET',
+            url: '/api/users/' + userLocationId
+        }).then(function(response) {
+        	console.log("UserbyLocationData", response.data);
+            deferred.resolve(response.data)
+        });
+        return deferred.promise;
+    }
+
+
+
+
+
+
+
+
 
 
 

@@ -221,10 +221,29 @@ app.get('/api/locations', function(req, res) {
     })
 });
 
+// Add Sales Data to the user
+app.post('/api/sales/:userId', function(req, res) {
+        User.findByIdAndUpdate(
+            req.params.userId, {
+                $push: {
+                    sales: req.body
+                }
+            }, {
+                safe: true
+            },
+            function(err, model) {
+                if (!err) res.status(200).json(model);
+            }
+        )
+})
 
+//Getting all user info from a certain location 
 
-
-
+app.get('/api/users/:locationId', function(req, res) {
+    User.find({locationId: req.params.locationId}, function(error, data) {
+        return res.json(data);
+    })
+});
 
 
 // app.post('/api/tips/:userId', function(req, res) {

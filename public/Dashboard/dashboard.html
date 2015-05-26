@@ -1,5 +1,4 @@
-
-<div class="storeStatsContainer">
+<div class="userDashContainer">
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper green">
@@ -7,10 +6,55 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li class="active"><a href="/#/dashboard">Dashboard</a></li>
                     <li><a href="/#/tips">Tips</a></li>
-                    <li><a href="javascript.html">Store Stats</a></li>
+                    <li><a href="/#/storeStats">Store Stats</a></li>
                 </ul>
             </div>
         </nav>
     </div>
+    <div class="storeStats container">
+        <ul class="collapsible" data-collapsible="expandable">
+            <li>
+                <div class="collapsible-header active"><i class="mdi-image-looks-one"></i>{{avgArr[0].firstName}}{{avgArr[0].lastName}}</div>
+                <div class="collapsible-body">
+                    <h5>Store Number: </h5>
+                    <h5>Average Daily Sales: {{avgArr[0].salesAvg}}</h5>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="mdi-image-looks-two"></i>{{avgArr[1].firstName}}{{avgArr[1].lastName}}</div>
+                <div class="collapsible-body">
+                    <h5>Store Number: </h5>
+                    <h5>Average Daily Sales: {{avgArr[1].salesAvg}}</h5>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="mdi-image-looks-3"></i>{{avgArr[2].firstName}}{{avgArr[2].lastName}}</div>
+                <div class="collapsible-body">
+                    <h5>Store Number: </h5>
+                    <h5>Average Daily Sales: {{avgArr[2].salesAvg}}</h5>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="mdi-image-looks-4"></i>{{avgArr[3].firstName}}{{avgArr[3].lastName}}</div>
+                <div class="collapsible-body">
+                    <h5>Store Number:</h5>
+                    <h5>Average Daily Sales: {{avgArr[3].salesAvg}}</h5>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="mdi-image-looks-5"></i>{{avgArr[4].firstName}}{{avgArr[4].lastName}}</div>
+                <div class="collapsible-body">
+                    <h5>Store Number:</h5>
+                    <h5>Average Daily Sales: {{avgArr[4].salesAvg}}</h5>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
-
+<script>
+$(document).ready(function() {
+    $('.collapsible').collapsible({
+        accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+});
+</script>

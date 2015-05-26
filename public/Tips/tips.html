@@ -6,7 +6,7 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/#/dashboard">Dashboard</a></li>
                     <li class="active"><a href="/#/tips">Tips</a></li>
-                    <li><a href="javascript.html">Store Stats</a></li>
+                    <li><a href="/#/storeStats">Store Stats</a></li>
                 </ul>
             </div>
         </nav>
@@ -38,16 +38,9 @@
                 </div>
             </form>
             <div id="tipList" class="col s6 offset-s1">
-                <form>
-                    <div class="row">
-                        <h4>Tips</h4>
-                    </div>
-                    <div class="input-field">
-                        <input id="search" type="search" ng-model="search" required>
-                        <label for="search"><i class="mdi-action-search"></i></label>
-                        <i class="mdi-navigation-close"></i>
-                    </div>
-                </form>
+                <div class="row">
+                    <h4>Tips</h4>
+                </div>
                 <table class="hoverable">
                     <thead>
                         <tr>
@@ -66,12 +59,10 @@
         </div>
     </div>
 </div>
-
 <script>
 $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 15, // Creates a dropdown of 15 years to control year
     format: 'mmmm d, yyyy'
 });
-
 </script>

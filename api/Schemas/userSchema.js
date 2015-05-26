@@ -20,8 +20,8 @@ var userSchema = new mongoose.Schema ({
     ], 
     sales: [
         {
-            date: { type: Date, required: true},
-            amount: { type: Date, required: true}
+            date: { type: Date, required: true, unique: true},
+            amount: { type: String, required: true}
         }
     ]
 

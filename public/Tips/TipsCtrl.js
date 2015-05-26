@@ -34,7 +34,6 @@ app.controller('TipsCtrl', function($scope, mainService) {
 		}
 
 		mainService.sendTipsData(tip).then(function(data) {
-			console.log(data);
 			$scope.date= "";
 		    $scope.tipAmount= "";
 		});
