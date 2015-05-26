@@ -164,7 +164,7 @@ app.service('mainService', function($http, $q) {
         return locationId
     }
 
-    // get Location Data no
+    // get Location Data
     this.locationData = function() {
         var deferred = $q.defer();
         $http({
@@ -178,20 +178,21 @@ app.service('mainService', function($http, $q) {
     }
 
     var loc = function() {
+        var id;
         if (this.locationId) {
-            loc = locationId
+            id = locationId
         }
         if (this.userLocationId) {
-            loc = userLocationId
+             id = userLocationId
         }
-        return loc;
-        console.log("locVar", loc);
+        return id;
+        console.log("locVar", id);
     };
 
 
 
 
-
+// for user dashboard
     this.userDatabyLoc = function() {
         var id = loc();
         var deferred = $q.defer();

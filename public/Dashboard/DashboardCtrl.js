@@ -4,6 +4,11 @@ app.controller('DashboardCtrl', function($scope, mainService) {
 
     $scope.locationData;
     $scope.avgArr = [];
+    $scope.navBar = true;
+
+    var compareNumbers = function(a, b) {
+        return a - b;
+    }
 
     $scope.userDatabyLoc = function() {
         mainService.userDatabyLoc().then(function(data) {
@@ -13,8 +18,12 @@ app.controller('DashboardCtrl', function($scope, mainService) {
             for (var i = 0; i < data.length; i++) {
 
                 var avgObj = {
-                    firstName: data[i].firstName.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); }),
-                    lastName: data[i].lastName.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); }),
+                    firstName: data[i].firstName.replace(/(?:^|\s)\S/g, function(a) {
+                        return a.toUpperCase();
+                    }),
+                    lastName: data[i].lastName.replace(/(?:^|\s)\S/g, function(a) {
+                        return a.toUpperCase();
+                    }),
                     salesAvg: 0
                 }
 
@@ -31,20 +40,29 @@ app.controller('DashboardCtrl', function($scope, mainService) {
                 $scope.avgArr.push(avgObj);
                 totalAmount = 0;
             }
-            var compareNumbers = function (a, b) {
-       			return a.salesAvg - b.salesAvg;
-    		}
+            var compareNumbers = function(a, b) {
+                return a.salesAvg - b.salesAvg;
+            }
             $scope.avgArr = $scope.avgArr.sort(compareNumbers).reverse();
             console.log($scope.avgArr);
         })
-	
+
 
     };
 
-    var compareNumbers = function (a, b) {
-       return a - b;
-    }
     
+var userLoggedIn = mainService.userLoggedIn();
+console.log(userLoggedIn);
+
+$scope.navView = function() {
+ if(userLoggedIn) {
+ 	$scope.navBar = false;
+ }
+};
+
+
+$scope.navView();
+   
 
 
 
