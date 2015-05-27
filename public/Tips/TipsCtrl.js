@@ -9,6 +9,7 @@ app.controller('TipsCtrl', function($scope, mainService) {
     var monthNames = ["January", "February", "March", "April", "May", "June",
   		"July", "August", "September", "October", "November", "December"
 	];
+	var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
 	$scope.addTipData = function() {
 		 var amount = $scope.tipAmount;
@@ -19,8 +20,9 @@ app.controller('TipsCtrl', function($scope, mainService) {
 		var date = new Date($scope.date);
         var month = monthNames[date.getMonth()];
 		var day = date.getDate();
+		var dayofWeek = days[date.getDay()];
 		var year = date.getFullYear();
-		var newDate = month + " " + day + ", " + year;
+		var newDate = dayofWeek + " // " +month + " " + day + ", " + year;
 		console.log(newDate);
 
 		$scope.tipsList.unshift({
@@ -55,8 +57,8 @@ app.controller('TipsCtrl', function($scope, mainService) {
        			var month = monthNames[date.getMonth()];
 				var day = date.getDate();
 				var year = date.getFullYear();
-				var newDate = month + " " + day + ", " + year;
-				console.log(newDate);
+				var dayofWeek = days[date.getDay()];
+				var newDate = dayofWeek + " // " + month + " " + day + ", " + year;
 
 				tipObj.date = newDate;
 				tipObj.amount = data[i].tipAmount;

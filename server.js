@@ -115,7 +115,6 @@ app.use(express.static(__dirname + '/public'));
 //Login User
 
 app.post('/api/auth', function(req, res, next) {
-    console.log('server req made it', req.user);
     passport.authenticate('local', function(err, user, info) {
         return res.json(user);
     })(req, res, next);

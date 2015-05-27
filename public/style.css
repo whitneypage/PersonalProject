@@ -7,14 +7,14 @@ body {
 
 
 .loginContainer {
-    background: url('DeathtoStock_Wired7.jpg') no-repeat center center fixed;
+    background: url('P0B6LAPFPC.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100%;
     width: 100%;
 }
 
 .storeLoginContainer {
-    background: url('https://download.unsplash.com/photo-1428908728789-d2de25dbd4e2') no-repeat center center fixed;
+    background: url('DeathtoStock_Wired7.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100%;
     width: 100%;
@@ -37,6 +37,7 @@ p {
 
 .loginForm {
     padding-top: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 /* label focus color */
@@ -72,22 +73,7 @@ p {
     border-bottom: 1px solid green;
     box-shadow: 0 1px 0 0 green;
 }
-/*invalid line color*/
 
-/*.input-field input[type=text].invalid {
-    border-bottom: 1px solid #ffff00;
-    box-shadow: 0 1px 0 0 #ffff00;
-}
-
-.input-field input[type=email].invalid {
-    border-bottom: 1px solid #ffff00;
-    box-shadow: 0 1px 0 0 #ffff00;
-}
-
-.input-field input[type=password].invalid {
-    border-bottom: 1px solid #ffff00;
-    box-shadow: 0 1px 0 0 #ffff00;
-}*/
 
 .nav-wrapper a{
 	font-family: 'Josefin Sans', sans-serif;
@@ -102,15 +88,42 @@ p {
 	padding-top: 70px;
 }
 
+.serverStats {
+    padding-top: 50px;
+}
+
 .collapsible-header {
 	font-size: 33px;
 }
 
+/*.userDashContainer {
+    background-color: rgb(0, 87, 39);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}*/
 
+.userDashContainer {
+/*    background-color: gray;
+    background-size: cover;*/
+    height: 100%;
+    width: 100%;
+}
 
+.listWrap {
+    counter-reset: my-counter;
+}
+.listWrap li {
+    font-family: font-family: 'Josefin Sans', sans-serif;
+    font-size: 30px;
+}
 
-
-
+.list:before {
+    content: counter(my-counter);
+    counter-increment: my-counter;
+    font-size: 80px;
+    margin: 5px;
+}
 
 
 
