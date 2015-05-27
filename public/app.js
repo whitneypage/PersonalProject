@@ -1,6 +1,6 @@
 var app = angular.module('serveStats', ['ngRoute']);
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider ) {
 
 	$routeProvider
 	
@@ -42,6 +42,6 @@ app.config(function($routeProvider) {
 	.otherwise({
 		redirectTo: '/'
 	})
-
+ 	
 
 });

@@ -8,9 +8,11 @@ var cors = require('cors');
 var bcrypt = require('bcrypt');
 
 
+
 var app = express();
 var port = 9000;
 var mongoUri = 'mongodb://localhost:27017/PP'
+
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -252,11 +254,25 @@ app.delete('/api/remove/:locationId', function(req, res){
         });
 })
 
-// getting a specific user 
+// getting a specific user by week info
 
 app.get('/api/dash/:userId', function(req, res) {
-	User.find({_id: req.params.userId}, function(err, data) {
-		if (err) return res.status(500).send(err);
-		 return res.json(data);
-	})
+	
+    User
+    .find({_id: req.params.userId}, 'sales', function(err, data) {
+    	if (err) return res.status(500).send(err);
+    	res.json(data);
+    })
+
 })
+
+
+
+
+
+
+
+
+
+
+

@@ -4,7 +4,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
 
     $scope.locationData;
     $scope.avgArr = [];
-    
+
 
     var compareNumbers = function(a, b) {
         return a - b;
@@ -53,19 +53,41 @@ app.controller('userStatsCtrl', function($scope, mainService) {
 
     $scope.userDatabyLoc();
 
-    $scope.userData = function() {
-        var date = new Date();
-        var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-        var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-        console.log(firstDay);
-        console.log(lastDay);
-        mainService.getUserData().then(function(data) {
-            console.log("userData", data);
+    var weekArr = [];
+    var sunWeek;
+    var monWeek;
+    var tueWeek;
+    var wedWeek;
+    var thuWeek;
+    var friWeek;
+    var satWeek;
+
+    var curr = new Date;
+    var first = curr.getDate() - curr.getDay();
+    var last = first + 6;
+    var firstday = new Date(curr.setDate(first));
+    var lastday = new Date(curr.setDate(last));
+    console.log("days", firstday, lastday);
+
+    $scope.userDatabyWeek = function() {
+
+        mainService.userDatabyWeek().then(function(data) {
+            var newSalesArr = data[0].sales;
+            console.log(newSalesArr);
+            for (var p = 0; p < newSalesArr.length; p++) {
+                var currDate = new Date(newSalesArr[p].date)
+                if ( currDate > firstday && currDate < lastday) {
+                    weekArr.push(newSalesArr[p]);
+                    
+
+                }
+                console.log("weekArr", weekArr);
+            };
         })
     }
 
 
 
-    $scope.userData();
+    $scope.userDatabyWeek();
 
-}); 
+});

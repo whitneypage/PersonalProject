@@ -28,7 +28,7 @@ body {
 }
 
 
-p {
+.LoginOptions p {
     font-family: 'Josefin Sans', sans-serif;
     color: white;
     margin: 0;
@@ -78,6 +78,7 @@ p {
 .nav-wrapper a{
 	font-family: 'Josefin Sans', sans-serif;
 	font-size: 30px;
+   
 }
 
 #UserReg-form, #tipForm, .storeStats {

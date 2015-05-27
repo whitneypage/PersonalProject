@@ -206,13 +206,12 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     };
 
-    this.getUserData = function() {
+    this.userDatabyWeek = function() {
         var deferred = $q.defer();
         $http({
             method: 'GET',
-            url: '/api/dash/' + userId
+            url: '/api/dash/' + userId 
         }).then(function(response) {
-            console.log("UserbyId", response.data)
             deferred.resolve(response.data)
         });
         return deferred.promise;
