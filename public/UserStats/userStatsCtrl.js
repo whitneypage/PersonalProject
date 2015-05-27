@@ -1,6 +1,6 @@
 var app = angular.module('serveStats');
 
-app.controller('DashboardCtrl', function($scope, mainService) {
+app.controller('userStatsCtrl', function($scope, mainService) {
 
     $scope.locationData;
     $scope.avgArr = [];
@@ -50,7 +50,22 @@ app.controller('DashboardCtrl', function($scope, mainService) {
 
     };
 
+
     $scope.userDatabyLoc();
 
+    $scope.userData = function() {
+        var date = new Date();
+        var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        console.log(firstDay);
+        console.log(lastDay);
+        mainService.getUserData().then(function(data) {
+            console.log("userData", data);
+        })
+    }
 
-}); // ends controller
+
+
+    $scope.userData();
+
+}); 

@@ -7,7 +7,7 @@ app.controller('RegisterCtrl', function($scope, mainService, $location) {
     $scope.loginUser = function() {
         console.log('fired', $scope.loginEmail, $scope.loginPassword)
         mainService.loginUser($scope.loginEmail, $scope.loginPassword).then(function(response) {
-            if (response) $location.path('/dashboard');
+            if (response) $location.path('/userStats');
         }).catch(function(err) {
             console.log(err);
         });

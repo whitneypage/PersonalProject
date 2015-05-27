@@ -29,6 +29,11 @@ app.config(function($routeProvider) {
 		controller: 'DashboardCtrl' 
 	})
 
+	.when('/userStats', {
+		templateUrl: 'UserStats/userStats.html',
+		controller: 'userStatsCtrl'
+	})
+
 	.when('/tips', {
 		templateUrl:'Tips/tips.html',
 		controller: 'TipsCtrl'

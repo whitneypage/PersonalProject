@@ -212,7 +212,7 @@ app.post('/api/location/:locationId', function(req, res) {
             }
         )
 })
-    // Get the Locations
+    // Get all the Locations
 app.get('/api/locations', function(req, res) {
 	console.log("hit api location")
     Location.find({}, function(error, data) {
@@ -252,8 +252,11 @@ app.delete('/api/remove/:locationId', function(req, res){
         });
 })
 
-// app.post('/api/tips/:userId', function(req, res) {
-//        User.findByIdAndUpdate(req.params.userId, req.body, function(err, result) {
-//            if (err) return res.status(500).send(err);
-//            res.send(result);
-//        });
+// getting a specific user 
+
+app.get('/api/dash/:userId', function(req, res) {
+	User.find({_id: req.params.userId}, function(err, data) {
+		if (err) return res.status(500).send(err);
+		 return res.json(data);
+	})
+})

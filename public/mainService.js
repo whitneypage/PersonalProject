@@ -206,6 +206,17 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     };
 
+    this.getUserData = function() {
+        var deferred = $q.defer();
+        $http({
+            method: 'GET',
+            url: '/api/dash/' + userId
+        }).then(function(response) {
+            console.log("UserbyId", response.data)
+            deferred.resolve(response.data)
+        });
+        return deferred.promise;
+    }
 
 
 
@@ -216,20 +227,5 @@ app.service('mainService', function($http, $q) {
 
 
 
-
-    // this.editTip = function() {
-    //  var deferred = $q.defer();
-    //     $http({
-    //         method: 'POST',
-    //         url: '/api/tips/' + userId,
-    //         data: {
-    //             tipDate: tipsData.date,
-    //             tipAmount: tipsData.amount
-    //         }
-    //     }).then(function(response) {
-    //         deferred.resolve(response.data)
-    //     });
-    //     return deferred.promise;
-    // };
 
 }); //ends service
