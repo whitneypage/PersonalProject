@@ -54,13 +54,42 @@ app.controller('userStatsCtrl', function($scope, mainService) {
     $scope.userDatabyLoc();
 
 
-    var sunWeek;
-    var monWeek;
-    var tueWeek;
-    var wedWeek;
-    var thuWeek;
-    var friWeek;
-    var satWeek;
+    var sunWeek = {
+        amount: "0",
+        date: "",
+        _id: "",
+    };    
+    var monWeek = {
+        amount: "0",
+        date: "",
+        _id: "",
+    };  
+    var tueWeek = {
+        amount: "0",
+        date: "",
+        _id: "",
+    };  
+
+    var wedWeek = {
+        amount: "0",
+        date: "",
+        _id: "",
+    }; 
+    var thuWeek = {
+        amount: "0",
+        date: "",
+        _id: "",
+    }; 
+    var friWeek = {
+        amount: "0",
+        date: "",
+        _id: "",
+    }; 
+    var satWeek = {
+        amount: "0",
+        date: "",
+        _id: "",
+    }; 
 
     var curr = new Date;
     var first = curr.getDate() - curr.getDay();
@@ -115,6 +144,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
 
 
                 }; // ends for loop
+                console.log(sunWeek);
                 var chart = AmCharts.makeChart("chartdiv", {
                     "type": "serial",
                     "theme": "light",
@@ -179,6 +209,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
 
                 });
             })
+console.log(satWeek);
         } // ends $scope.userDatabyWeek
 
 
@@ -296,8 +327,7 @@ $scope.theAvg;
 var getAvg = function(arr) {
     var arrTotal = 0;
     for (var x = 0; x < arr.length; x++) {
-        var amount = arr[x]
-        amount = parseFloat(amount);
+        var amount = parseFloat(arr[x]);
         arrTotal += amount;
     }
 

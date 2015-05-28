@@ -42,6 +42,9 @@ mongoose.connect(mongoUri, function(err) {
 })
 
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
@@ -87,22 +90,6 @@ passport.use(new LocalStrategy(
     }
 ));
 
-
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-
-
-
-var isAuthed = function(req, res, next) {
-    if (!req.isAuthenticated()) {
-        return res.status(403).end();
-    }
-    return next();
-}
-
-
 passport.serializeUser(function(user, done) {
     done(null, user);
 })
@@ -112,6 +99,12 @@ passport.deserializeUser(function(obj, done) {
 
 app.use(express.static(__dirname + '/public'));
 
+var reqAuth = function(req, res, next) {
+    if (!req.isAuthenticated()) {
+        return res.status(401).end();
+    }
+    next();
+}
 
 
 //Login User
