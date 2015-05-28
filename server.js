@@ -214,7 +214,7 @@ app.post('/api/location/:locationId', function(req, res) {
             }
         )
 })
-    // Get all the Locations
+// Get all the Locations
 app.get('/api/locations', function(req, res) {
 	console.log("hit api location")
     Location.find({}, function(error, data) {
@@ -254,12 +254,21 @@ app.delete('/api/remove/:locationId', function(req, res){
         });
 })
 
-// getting a specific user by week info
+// getting a specific user sales array 
 
 app.get('/api/dash/:userId', function(req, res) {
-	
-    User
+	User
     .find({_id: req.params.userId}, 'sales', function(err, data) {
+    	if (err) return res.status(500).send(err);
+    	res.json(data);
+    })
+
+})
+
+// getting specific locations sales array
+app.get('/api/dash/:locationId', function(req, res) {
+	locationSchema
+    .find({_id: req.params.locationId}, 'sales', function(err, data) {
     	if (err) return res.status(500).send(err);
     	res.json(data);
     })

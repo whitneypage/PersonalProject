@@ -11,12 +11,14 @@
             </div>
         </nav>
     </div>
-    <div class="serverStats container">
-        <div class="listWrap row col s4">
+    <div class="serverStats row">
+        <div class="userChart col s8">
+            <div id="chartdiv"></div>
+        </div>
+        <div class="listWrap col s4">
             <ul ng-repeat="info in avgArr">
-                <li class="list">  {{info.firstName}} {{info.lastName}} - {{info.salesAvg}}</li>
+                <li class="list"> {{info.firstName}} {{info.lastName}} - {{info.salesAvg}}</li>
             </ul>
         </div>
     </div>
- 
 </div>

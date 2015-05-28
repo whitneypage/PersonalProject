@@ -1,6 +1,6 @@
 var app = angular.module('serveStats');
 
-app.controller('DashboardCtrl', function($scope, mainService) {
+app.controller('ServerStatsCtrl', function($scope, mainService) {
 
     $scope.locationData;
     $scope.avgArr = [];

@@ -74,11 +74,12 @@ body {
     box-shadow: 0 1px 0 0 green;
 }
 
-
+/*a .brand-logo {
+    padding-left: 20px;
+}*/
 .nav-wrapper a{
 	font-family: 'Josefin Sans', sans-serif;
 	font-size: 30px;
-   
 }
 
 #UserReg-form, #tipForm, .storeStats {
@@ -126,6 +127,16 @@ body {
     margin: 5px;
 }
 
+#chartdiv {
+    width       : 100%;
+    height      : 500px;
+    font-size   : 11px;  
+}                                       
+
+.amcharts-export-menu-top-right {
+  top: 10px;
+  right: 0;
+}   
 
 
 

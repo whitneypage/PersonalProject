@@ -14,6 +14,7 @@ app.controller('storeStatsCtrl', function($scope, mainService) {
 
     $scope.allLocalData = function() {
         mainService.locationData().then(function(data) {
+            console.log(data);
             var salesArr;
             var totalAmount = 0;
             var AvgSales;

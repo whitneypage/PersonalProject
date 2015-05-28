@@ -206,7 +206,8 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     };
 
-    this.userDatabyWeek = function() {
+// get specific users sales array 
+    this.userData = function() {
         var deferred = $q.defer();
         $http({
             method: 'GET',
@@ -218,6 +219,7 @@ app.service('mainService', function($http, $q) {
     }
 
 
+// get specific locations sales array 
 
 
 

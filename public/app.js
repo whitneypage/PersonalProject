@@ -25,8 +25,8 @@ app.config(function($routeProvider ) {
 	})
 
 	.when('/dashboard', {
-		templateUrl: 'Dashboard/dashboard.html',
-		controller: 'DashboardCtrl' 
+		templateUrl: 'ServerStats/ServerStats.html',
+		controller: 'ServerStatsCtrl' 
 	})
 
 	.when('/userStats', {
