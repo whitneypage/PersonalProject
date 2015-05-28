@@ -339,7 +339,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
                 } //ends if
 
             }; //ends for
-
+            console.log("thuArr", thuArr);
             var sunAvg = getAvg(sunArr);
             var monAvg = getAvg(monArr);
             var tueAvg = getAvg(tueArr);
@@ -347,6 +347,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
             var thuAvg = getAvg(thuArr);
             var friAvg = getAvg(friArr);
             var satAvg = getAvg(satArr);
+            console.log("ThuAvg", thuAvg);
 
 
             var chart2 = AmCharts.makeChart("chartdiv2", {
@@ -412,7 +413,18 @@ app.controller('userStatsCtrl', function($scope, mainService) {
                 }
 
             });
+
         })
+        // 
+
+        var sunArr = [];
+        var monArr = [];
+        var tueArr = [];
+        var wedArr = [];
+        var thuArr = [];
+        var friArr = [];
+        var satArr = [];
+
     }; // ends $scope.userDatabyMonth
 
 
