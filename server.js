@@ -106,6 +106,10 @@ var reqAuth = function(req, res, next) {
     next();
 }
 
+// app.get('/api/auth/logout', function(req, res) {
+// 	req.logout();
+// return res.redirect('/#/')
+// })
 
 //Login User
 

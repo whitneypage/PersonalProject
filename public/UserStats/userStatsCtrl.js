@@ -58,38 +58,38 @@ app.controller('userStatsCtrl', function($scope, mainService) {
         amount: "0",
         date: "",
         _id: "",
-    };    
+    };
     var monWeek = {
         amount: "0",
         date: "",
         _id: "",
-    };  
+    };
     var tueWeek = {
         amount: "0",
         date: "",
         _id: "",
-    };  
+    };
 
     var wedWeek = {
         amount: "0",
         date: "",
         _id: "",
-    }; 
+    };
     var thuWeek = {
         amount: "0",
         date: "",
         _id: "",
-    }; 
+    };
     var friWeek = {
         amount: "0",
         date: "",
         _id: "",
-    }; 
+    };
     var satWeek = {
         amount: "0",
         date: "",
         _id: "",
-    }; 
+    };
 
     var curr = new Date;
     var first = curr.getDate() - curr.getDay();
@@ -144,7 +144,6 @@ app.controller('userStatsCtrl', function($scope, mainService) {
 
 
                 }; // ends for loop
-                console.log(sunWeek);
                 var chart = AmCharts.makeChart("chartdiv", {
                     "type": "serial",
                     "theme": "light",
@@ -209,61 +208,78 @@ app.controller('userStatsCtrl', function($scope, mainService) {
 
                 });
             })
-console.log(satWeek);
+
         } // ends $scope.userDatabyWeek
 
 
 
     $scope.userDatabyWeek();
 
-    var Jan = {
+    var getAvg = function(arr) {
+        var arrTotal = 0;
+        for (var x = 0; x < arr.length; x++) {
+            var amount = parseFloat(arr[x]);
+            arrTotal += amount;
+        }
+
+        var dailyAvg = arrTotal / arr.length;
+        var theAvg = dailyAvg.toFixed(2);
+
+        return theAvg;
+        arrTotal = 0;
+    }
+
+
+    $scope.Jan = {
         firstday: new Date(2014, 11, 31, 23),
         lastday: new Date(2015, 0, 31, 23)
     }
-    var Feb = {
+    $scope.Feb = {
         firstday: new Date(2015, 0, 31, 24),
         lastday: new Date(2015, 1, 28, 23)
     }
-    var Mar = {
+    $scope.Mar = {
         firstday: new Date(2015, 1, 28, 24),
         lastday: new Date(2015, 2, 31, 23)
     }
-    var Apr = {
+    $scope.Apr = {
         firstday: new Date(2015, 2, 31, 24),
         lastday: new Date(2015, 3, 30, 23)
     }
-    var May = {
+    $scope.May = {
         firstday: new Date(2015, 3, 30, 24),
         lastday: new Date(2015, 4, 30, 23)
     }
-    var Jun = {
+    $scope.Jun = {
         firstday: new Date(2015, 4, 30, 24),
         lastday: new Date(2015, 5, 31, 23)
     }
-    var Jul = {
+    $scope.Jul = {
         firstday: new Date(2015, 5, 31, 24),
         lastday: new Date(2015, 6, 31, 23)
     }
-    var Aug = {
+    $scope.Aug = {
         firstday: new Date(2015, 6, 31, 24),
         lastday: new Date(2015, 7, 31, 23)
     }
-    var Sep = {
+    $scope.Sep = {
         firstday: new Date(2015, 7, 31, 24),
         lastday: new Date(2015, 8, 30, 23)
     }
-    var Oct = {
+    $scope.Oct = {
         firstday: new Date(2015, 8, 30, 24),
         lastday: new Date(2015, 9, 31, 23)
     }
-    var Nov = {
+    $scope.Nov = {
         firstday: new Date(2015, 9, 31, 24),
         lastday: new Date(2015, 10, 30, 23)
     }
-    var Dec = {
+    $scope.Dec = {
         firstday: new Date(2015, 10, 30, 24),
         lastday: new Date(2015, 11, 31, 23)
     }
+
+    console.log($scope.Dec.firstday, $scope.Dec.lastday);
 
     var sunArr = [];
     var monArr = [];
@@ -273,18 +289,27 @@ console.log(satWeek);
     var friArr = [];
     var satArr = [];
 
+    var sunAvg = 0;
+    var monAvg = 0;
+    var tueAvg = 0;
+    var wedAvg = 0;
+    var thuAvg = 0;
+    var friAvg = 0;
+    var satAvg = 0;
+
 
     $scope.userDatabyMonth = function(monthFirst, monthLast) {
+        console.log("dates", monthFirst, monthLast);
+        console.log("Start of User Data by Month");
         mainService.userData().then(function(data) {
             var allSales = data[0].sales;
-            console.log(allSales);
+            console.log("Start of return from service");
             for (var k = 0; k < allSales.length; k++) {
                 var theDate = new Date(allSales[k].date)
                 theDate = new Date(theDate.getTime() + (theDate.getTimezoneOffset() * 60000));
-                console.log(theDate);
                 if (theDate >= monthFirst && theDate <= monthLast) {
                     var dayMonth = theDate.getDay();
-                    console.log("dayMonth", dayMonth);
+                    console.log("if")
                     switch (dayMonth) {
                         case 0:
                             sunArr.push(allSales[k].amount)
@@ -314,28 +339,88 @@ console.log(satWeek);
                 } //ends if
 
             }; //ends for
+
+            var sunAvg = getAvg(sunArr);
+            var monAvg = getAvg(monArr);
+            var tueAvg = getAvg(tueArr);
+            var wedAvg = getAvg(wedArr);
+            var thuAvg = getAvg(thuArr);
+            var friAvg = getAvg(friArr);
+            var satAvg = getAvg(satArr);
+
+
+            var chart2 = AmCharts.makeChart("chartdiv2", {
+                "type": "serial",
+                "theme": "dark",
+                "marginRight": 70,
+                "path": "http://www.amcharts.com/lib/3/",
+                "dataProvider": [{
+                    "dayOfWeek": "Sunday",
+                    "sales": sunAvg,
+                    "color": "#FF0F00"
+                }, {
+                    "dayOfWeek": "Monday",
+                    "sales": monAvg,
+                    "color": "#F8FF01"
+                }, {
+                    "dayOfWeek": "Tuesday",
+                    "sales": tueAvg,
+                    "color": "#B0DE09"
+                }, {
+                    "dayOfWeek": "Wednesday",
+                    "sales": wedAvg,
+                    "color": "#0D8ECF"
+                }, {
+                    "dayOfWeek": "Thursday",
+                    "sales": thuAvg,
+                    "color": "#2A0CD0"
+                }, {
+                    "dayOfWeek": "Friday",
+                    "sales": friAvg,
+                    "color": "#8A0CCF"
+                }, {
+                    "dayOfWeek": "Saturday",
+                    "sales": satAvg,
+                    "color": "#CD0D74"
+                }],
+                "valueAxes": [{
+                    "axisAlpha": 0,
+                    "position": "left",
+                    "title": "Monthly Daily Sales Average"
+                }],
+                "startDuration": 1,
+                "graphs": [{
+                    "balloonText": "<b>[[category]]: [[value]]</b>",
+                    "fillColorsField": "color",
+                    "fillAlphas": 0.9,
+                    "lineAlpha": 0.2,
+                    "type": "column",
+                    "valueField": "sales"
+                }],
+                "chartCursor": {
+                    "categoryBalloonEnabled": false,
+                    "cursorAlpha": 0,
+                    "zoomable": false
+                },
+                "categoryField": "dayOfWeek",
+                "categoryAxis": {
+                    "gridPosition": "start",
+                    "labelRotation": 45
+                },
+                "export": {
+                    "enabled": true
+                }
+
+            });
         })
     }; // ends $scope.userDatabyMonth
 
 
 
-    $scope.userDatabyMonth(May.firstday, May.lastday);
+    $scope.userDatabyMonth($scope.May.firstday, $scope.May.lastday);
 
 
-$scope.theAvg;
 
-var getAvg = function(arr) {
-    var arrTotal = 0;
-    for (var x = 0; x < arr.length; x++) {
-        var amount = parseFloat(arr[x]);
-        arrTotal += amount;
-    }
-
-    var dailyAvg = arrTotal / tuesArr.length;
-    $scope.theAvg = dailyAvg.toFixed(2);
-    console.log($scope.theAvg)
-    arrTotal = 0;
-}
 
 
 
