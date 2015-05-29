@@ -6,7 +6,7 @@ body {
 }
 
 .loginContainer {
-    background: url('P0B6LAPFPC.jpg') no-repeat center center fixed;
+    background: url('DeathtoStock_Wired7.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100%;
     width: 100%;
@@ -112,13 +112,13 @@ body {
     width: 100%;
 }
 
-.listWrap {
+.listWrap{
     counter-reset: my-counter;
 }
 
 .listWrap li {
-    font-family: font-family: 'Josefin Sans', sans-serif;
     font-size: 30px;
+
 }
 
 .list:before {
@@ -139,6 +139,10 @@ body {
     right: 0;
 }
 
+.amcharts-chart-div a {
+    visibility: hidden;
+}
+
 #chartdiv2 {
     background: #3f3f4f;
     color: #ffffff;
@@ -146,4 +150,12 @@ body {
     height: 500px;
     font-size: 11px;
 }
+
+
+#chartdiv3 {background: #282828 url('http://www.amcharts.com/lib/3/patterns/chalk/bg.jpg');color: #fff;  
+    width       : 100%;
+    height      : 500px;
+    font-size   : 11px; 
+    font-family:  'Josefin Sans', sans-serif;
+}                                       
 

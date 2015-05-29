@@ -11,13 +11,55 @@
             </div>
         </nav>
     </div>
-    <div class="serverStats container">
-        <div class="listWrap row col s4">
-            <ul ng-repeat="info in avgArr">
-                <li class="list">  {{info.firstName}} {{info.lastName}} - {{info.salesAvg}}</li>
+    <div class="serverStats row">
+        <div class="listWrap col s4">
+            <ul ng-repeat="info in avgArr" ng-click='$parent.selected = info'>
+                <li class="list" ng-click="doSelect(info.firstName, info.lastName)"> {{info.firstName}} {{info.lastName}} - ${{info.salesAvg}}</li>
             </ul>
         </div>
+        <div class="col s2">
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-button btn' data-activates='dropdown1'>Choose a Month</a>
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content'>
+                <li ng-click="userDatabyMonth(Jan.firstday, Jan.lastday)"><a>January</a></li>
+                <li ng-click="userDatabyMonth(Feb.firstday, Feb.lastday)"><a>February</a></li>
+                <li ng-click="userDatabyMonth(Mar.firstday, Mar.lastday)"><a>March</a></li>
+                <li ng-click="userDatabyMonth(Apr.firstday, Apr.lastday)"><a>April</a></li>
+                <li ng-click="userDatabyMonth(May.firstday, May.lastday)"><a>May</a></li>
+                <li ng-click="userDatabyMonth(Jun.firstday, Jun.lastday)"><a>June</a></li>
+                <li ng-click="userDatabyMonth(Jul.firstday, Jul.lastday)"><a>July</a></li>
+                <li ng-click="userDatabyMonth(Aug.firstday, Aug.lastday)"><a>August</a></li>
+                <li ng-click="userDatabyMonth(Sep.firstday, Sep.lastday)"><a>September</a></li>
+                <li ng-click="userDatabyMonth(Oct.firstday, Oct.lastday)"><a>October</a></li>
+                <li ng-click="userDatabyMonth(Nov.firstday, Nov.lastday)"><a>November</a></li>
+                <li ng-click="userDatabyMonth(Dec.firstday, Dec.lastday)"><a>December</a></li>
+            </ul>
+        </div>
+        <div class="userChart2 col s6">
+        <h3>{{selected.firstName}} {{selected.lastName}}</h3>
+            <div id="chartdiv2"></div>
+        </div>
     </div>
- 
 </div>
+<script>
+$('.dropdown-button').dropdown({
+    inDuration: 300,
+    outDuration: 225,
+    constrain_width: false, // Does not change width of dropdown to that of the activator
+    hover: true, // Activate on hover
+    gutter: 0, // Spacing from edge
+    belowOrigin: true // Displays dropdown below the button
+});
 
+
+$(".dropdown-content li a").click(function() {
+
+    $(".btn").text($(this).text());
+    $(".btn").val($(this).text());
+});
+
+$(".listWrap li").click( function() {
+    $(".listWrap li").css("color", "")
+})
+</script>

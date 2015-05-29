@@ -177,28 +177,15 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     }
 
-    var loc = function() {
-        var id;
-        if (this.locationId) {
-            id = locationId
-        }
-        if (this.userLocationId) {
-             id = userLocationId
-        }
-        return id;
-        console.log("locVar", id);
-    };
 
 
 
-
-// for user dashboard
-    this.userDatabyLoc = function() {
-        var id = loc();
+// for User by Location dashboard
+    this.userDatabyLoc = function() {   
         var deferred = $q.defer();
         $http({
             method: 'GET',
-            url: '/api/users/' + id
+            url: '/api/users/' + locationId
         }).then(function(response) {
             console.log("UserbyLocationData", response.data);
             deferred.resolve(response.data)
@@ -218,8 +205,22 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     }
 
+ this.selectUserSales = function(first, last) {
+    console.log("mainService", first, last)
+     var deferred = $q.defer();
+        $http({
+            method: 'GET',
+            url: '/api/server',
+            data: {
+                firstName: first,
+                lastName: last
+            }
+        }).then(function(response) {
+            deferred.resolve(response.data)
+        });
+        return deferred.promise;
+ }
 
-// get specific locations sales array 
 
 
 

@@ -17,7 +17,7 @@
         </div>
         <div class="listWrap col s4">
             <ul ng-repeat="info in avgArr">
-                <li class="list"> {{info.firstName}} {{info.lastName}} - {{info.salesAvg}}</li>
+                <li class="list"> {{info.firstName}} {{info.lastName}} - ${{info.salesAvg}}</li>
             </ul>
         </div>
     </div>
@@ -45,17 +45,26 @@
             <div id="chartdiv2"></div>
         </div>
     </div>
+    <div class="TipsChart row">
+        <div class="userChart3 col s8">
+            <div id="chartdiv3"></div>
+        </div>
+    </div>
 </div>
-
 <script>
-     $('.dropdown-button').dropdown({
-      inDuration: 300,
-      outDuration: 225,
-      constrain_width: false, // Does not change width of dropdown to that of the activator
-      hover: true, // Activate on hover
-      gutter: 0, // Spacing from edge
-      belowOrigin: true // Displays dropdown below the button
-    }
-  );
+$('.dropdown-button').dropdown({
+    inDuration: 300,
+    outDuration: 225,
+    constrain_width: false, // Does not change width of dropdown to that of the activator
+    hover: true, // Activate on hover
+    gutter: 0, // Spacing from edge
+    belowOrigin: true // Displays dropdown below the button
+});
 
+
+$(".dropdown-content li a").click(function() {
+
+    $(".btn").text($(this).text());
+    $(".btn").val($(this).text());
+});
 </script>

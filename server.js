@@ -262,20 +262,31 @@ app.get('/api/dash/:userId', function(req, res) {
 
 })
 
-// getting specific locations sales array
-app.get('/api/dash/:locationId', function(req, res) {
-	locationSchema
-    .find({_id: req.params.locationId}, 'sales', function(err, data) {
-    	if (err) return res.status(500).send(err);
-    	res.json(data);
-    })
 
+app.get('/api/server', function(req, res) {
+	console.log("Lastest", req.body)
+	User
+	.find({firstName: req.body.firstName, lastName: req.body.lastName}, 'sales', function(err, data) {
+		console.log("error", err)
+		if (err) return res.status(500).send(err);
+    	res.json(data);
+	})
 })
 
+// getting specific locations sales arrays
+// app.get('/api/dash/:locationId', function(req, res) {
+// 	locationSchema
+//     .find({_id: req.params.locationId}, 'sales', function(err, data) {
+//     	if (err) return res.status(500).send(err);
+//     	res.json(data);
+//     })
+
+// })
 
 
 
 
+// app.listen(process.env.EXPRESS_PORT || 9000);
 
 
 
