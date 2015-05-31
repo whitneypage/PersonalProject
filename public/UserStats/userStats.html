@@ -1,28 +1,66 @@
 <div class="userDashContainer">
     <div class="navbar-fixed">
         <nav>
-            <div class="nav-wrapper black">
-                <a class="brand-logo" href="/#/">Login</a>
+            <div class="nav-wrapper">
+                <a class="brand-logo" href="/#/">LOGIN</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li class="active"><a href="/#/userStats">Dashboard</a></li>
-                    <li><a href="/#/storeStats">Store Stats</a></li>
-                    <li><a href="/#/tips">Tips</a></li>
+                    <li class="active"><a href="/#/userStats">DASHBOARD</a></li>
+                    <li><a href="/#/storeStats">STORE STATS</a></li>
+                    <li><a href="/#/tips">TIPS</a></li>
                 </ul>
             </div>
         </nav>
     </div>
     <div class="serverStats row">
-        <div class="userChart col s8">
-            <div id="chartdiv"></div>
+        <div class="welcome col s5">
+            <p class="left-align">HELLO</p>
+            <p class="center-align">{{userName}}!</p>
+            <hr class="hr">
+
         </div>
+        <div class="chartOne">
+            <div class="userChart col s6 offset-s1">
+                <div id="chartdiv"></div>
+            </div>
+        </div>
+    </div>
+   <!--  <div class="listRow row">
         <div class="listWrap col s4">
             <ul ng-repeat="info in avgArr">
                 <li class="list"> {{info.firstName}} {{info.lastName}} - ${{info.salesAvg}}</li>
             </ul>
         </div>
+    </div> -->
+    <div class="Try row col s12">
+       <div class="col s2">
+            <h1>#1</h1>
+           {{avgArr[0].firstName}}
+       </div>
+        <div class="col s2">
+        <h1>#2</h1>
+           {{avgArr[1].firstName}}
+       </div>
+       <h1>#3</h1>
+        <div class="col s2">
+           {{avgArr[2].firstName}}
+       </div>
+        <div class="col s2">
+        <h1>#4</h1>
+            {{avgArr[3].firstName}}
+       </div>
+        <div class="col s2">
+        <h1>#5</h1>
+           {{avgArr[4].firstName}}
+       </div>
+
     </div>
-    <div class="row">
-        <div class="col s3">
+    <div class="monthGraphRow row">
+     <div class="bottomChart col s6 offset-s2">
+            <div class="userChart2">
+                <div id="chartdiv2"></div>
+            </div>
+        </div>
+        <div class="dropIt col s2">
             <!-- Dropdown Trigger -->
             <a class='dropdown-button btn' data-activates='dropdown1'>Choose a Month</a>
             <!-- Dropdown Structure -->
@@ -41,15 +79,12 @@
                 <li ng-click="userDatabyMonth(Dec.firstday, Dec.lastday)"><a>December</a></li>
             </ul>
         </div>
-        <div class="userChart2 col s8">
-            <div id="chartdiv2"></div>
-        </div>
     </div>
-    <div class="TipsChart row">
+    <!--   <div class="TipsChart row">
         <div class="userChart3 col s8">
             <div id="chartdiv3"></div>
         </div>
-    </div>
+    </div> -->
 </div>
 <script>
 $('.dropdown-button').dropdown({

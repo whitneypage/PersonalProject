@@ -114,6 +114,7 @@ var reqAuth = function(req, res, next) {
 //Login User
 
 app.post('/api/auth', function(req, res, next) {
+	console.log("login user", req.body)
     passport.authenticate('local', function(err, user, info) {
         return res.json(user);
     })(req, res, next);
@@ -286,7 +287,7 @@ app.get('/api/server', function(req, res) {
 
 
 
-// app.listen(process.env.EXPRESS_PORT || 9000);
+
 
 
 

@@ -7,24 +7,24 @@
             <p>STORE LOGIN<i class="small mdi-navigation-arrow-forward"></i></p>
         </a>
     </div>
-    <div class="loginForm container">
+    <div class="loginForm">
         <div class="row">
-            <form class="col s12">
+            <form class="col s8">
                 <div class="row">
-                    <div class="input-field col s12">
-                        <input id="email" ng-model="loginEmail" type="email" class="validate white-text">
+                    <div class="input-field col s6">
+                        <input id="email" ng-model="loginEmail" type="email" class="validate red-text">
                         <label for="email">Email</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12">
-                        <input id="password" ng-model="loginPassword" type="password" class="validate white-text">
+                    <div class="input-field col s6">
+                        <input id="password" ng-model="loginPassword" type="password" class="validate red-text">
                         <label for="password">Password</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s2 offset-s10">
-                        <button class="btn-floating btn-large waves-effect waves-light green" type="submit" name="action" ng-click="loginUser()">
+                    <div class="col s2 offset-s5">
+                        <button class="btn-floating btn-large waves-effect waves-light red" type="submit" name="action" ng-click="loginUser()">
                             <i class="mdi-navigation-arrow-forward"></i>
                         </button>
                     </div>

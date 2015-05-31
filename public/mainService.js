@@ -84,6 +84,7 @@ app.service('mainService', function($http, $q) {
 
     // Display User Name 
     this.getUserName = function() {
+        console.log(userName);
             return userName;
         }
         // Getting Tip Data
@@ -177,15 +178,28 @@ app.service('mainService', function($http, $q) {
         return deferred.promise;
     }
 
+    var loc = function() {
+        var id;
+        if (this.locationId) {
+            id = locationId
+        }
+        if (this.userLocationId) {
+             id = userLocationId
+        }
+        return id;
+        console.log("locVar", id);
+    };
 
 
 
-// for User by Location dashboard
-    this.userDatabyLoc = function() {   
+
+// for user dashboard
+    this.userDatabyLoc = function() {
+        var id = loc();
         var deferred = $q.defer();
         $http({
             method: 'GET',
-            url: '/api/users/' + locationId
+            url: '/api/users/' + id
         }).then(function(response) {
             console.log("UserbyLocationData", response.data);
             deferred.resolve(response.data)

@@ -4,6 +4,8 @@ app.controller('ServerStatsCtrl', function($scope, mainService) {
 
     $scope.locationData;
     $scope.avgArr = [];
+    $scope.firstName;
+    $scope.lastName;
 
     var compareNumbers = function(a, b) {
         return a - b;
@@ -46,22 +48,21 @@ app.controller('ServerStatsCtrl', function($scope, mainService) {
                 return a.salesAvg - b.salesAvg;
             }
             $scope.avgArr = $scope.avgArr.sort(compareNumbers).reverse();
+            $scope.firstName = $scope.avgArr[0].firstName;
+            $scope.lastName = $scope.avgArr[0].lastName;
             console.log("avgArr", $scope.avgArr);
         })
 
 
     };
-
     $scope.userDatabyLoc();
 
 
-    $scope.firstName;
-    $scope.lastName;
 
 
     $scope.doSelect = function(firstName, lastName) {
         $scope.firstName = firstName,
-        $scope.lastName = lastName
+            $scope.lastName = lastName
         console.log($scope.firstName);
     }
 
@@ -281,7 +282,7 @@ app.controller('ServerStatsCtrl', function($scope, mainService) {
 
 
 
-
+    $scope.userDatabyMonth($scope.May.firstday, $scope.May.lastday);
 
 
 

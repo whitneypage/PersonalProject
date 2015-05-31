@@ -4,7 +4,11 @@ app.controller('userStatsCtrl', function($scope, mainService) {
 
     $scope.locationData;
     $scope.avgArr = [];
+    $scope.userName;
+    $scope.rank;
 
+
+    
 
     var compareNumbers = function(a, b) {
         return a - b;
@@ -52,6 +56,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
 
 
     $scope.userDatabyLoc();
+
 
 
     var sunWeek = {
@@ -146,7 +151,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
                 }; // ends for loop
                 var chart = AmCharts.makeChart("chartdiv", {
                     "type": "serial",
-                    "theme": "light",
+                    "theme": "patterns",
                     "marginRight": 70,
                     "path": "http://www.amcharts.com/lib/3/",
                     "dataProvider": [{
@@ -181,7 +186,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
                     "valueAxes": [{
                         "axisAlpha": 0,
                         "position": "left",
-                        "title": "This Weeks Sales"
+                        "title": "THIS WEEK SALES"
                     }],
                     "startDuration": 1,
                     "graphs": [{
@@ -352,13 +357,13 @@ app.controller('userStatsCtrl', function($scope, mainService) {
 
                 var chart2 = AmCharts.makeChart("chartdiv2", {
                     "type": "serial",
-                    "theme": "dark",
+                    "theme": "patterns",
                     "marginRight": 70,
                     "path": "http://www.amcharts.com/lib/3/",
                     "dataProvider": [{
                         "dayOfWeek": "Sunday",
                         "sales": sunAvg,
-                        "color": "#FF0F00"
+                        "color" : "#F8FF01"
                     }, {
                         "dayOfWeek": "Monday",
                         "sales": monAvg,
@@ -387,7 +392,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
                     "valueAxes": [{
                         "axisAlpha": 0,
                         "position": "left",
-                        "title": "Monthly Daily Sales Average"
+                        "title": "MONTHLY DAILY SALES AVG"
                     }],
                     "startDuration": 1,
                     "graphs": [{
@@ -499,7 +504,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
 
                     var chart3 = AmCharts.makeChart("chartdiv3", {
                         "type": "serial",
-                        "theme": "chalk",
+                        "theme": "light",
                         "marginRight": 70,
                         "path": "http://www.amcharts.com/lib/3/",
                         "dataProvider": [{
@@ -575,9 +580,14 @@ app.controller('userStatsCtrl', function($scope, mainService) {
 
     $scope.tipDataChart();
 
+    $scope.getUserName = function() {
+       var name  = mainService.getUserName()
+        $scope.userName = name.toUpperCase();
 
+    }
+    
 
-
+  $scope.getUserName();
 
 
 });

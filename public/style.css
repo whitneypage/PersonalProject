@@ -6,29 +6,26 @@ body {
 }
 
 .loginContainer {
-    background: url('DeathtoStock_Wired7.jpg') no-repeat center center fixed;
-    background-size: cover;
     height: 100%;
     width: 100%;
 }
 
 .storeLoginContainer {
-    background: url('DeathtoStock_Wired7.jpg') no-repeat center center fixed;
-    background-size: cover;
     height: 100%;
     width: 100%;
 }
 
 .appName p {
+    padding-left: 20px;
     font-family: 'Josefin Sans', sans-serif;
-    color: white;
+    color: black;
     margin: 0;
     font-size: 66px;
 }
 
 .LoginOptions p {
     font-family: 'Josefin Sans', sans-serif;
-    color: white;
+    color: black;
     margin: 0;
     font-size: 25px;
 }
@@ -40,43 +37,48 @@ body {
 /* label focus color */
 
 .input-field input[type=text]:focus + label {
-    color: green;
+    color: red;
 }
 /* label underline focus color */
 
 .input-field input[type=text]:focus {
-    border-bottom: 1px solid green;
-    box-shadow: 0 1px 0 0 green;
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
 }
 /* label focus color */
 
 .input-field input[type=email]:focus + label {
-    color: green;
+    color: red;
 }
 /* label underline focus color */
 
 .input-field input[type=email]:focus {
-    border-bottom: 1px solid green;
-    box-shadow: 0 1px 0 0 green;
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
 }
 /* label focus color */
 
 .input-field input[type=password]:focus + label {
-    color: green;
+    color: red;
 }
 /* label underline focus color */
 
 .input-field input[type=password]:focus {
-    border-bottom: 1px solid green;
-    box-shadow: 0 1px 0 0 green;
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
 }
-/*a .brand-logo {
-    padding-left: 20px;
-}*/
 
+
+.brand-logo {
+    padding-left: 20px;
+} 
+.nav-wrapper {
+    background-color: white;
+}
 .nav-wrapper a {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 30px;
+    font-size: 20px;
+    color: black;
 }
 
 #UserReg-form,
@@ -90,30 +92,30 @@ body {
     padding-top: 70px;
 }
 
-.serverStats {
-    padding-top: 50px;
-}
 
 .collapsible-header {
     font-size: 33px;
 }
-/*.userDashContainer {
-    background-color: rgb(0, 87, 39);
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-}*/
 
-.userDashContainer {
-    /*    background-color: gray;
-    background-size: cover;*/
-    
-    height: 100%;
-    width: 100%;
+
+
+
+.welcome {
+ padding-bottom: 60px;
+ color : white;
+ font-family: 'Josefin Sans', sans-serif;
+ font-size: 88px;
+ background-color: red;
+ background-size: 40% auto;
+ margin-top: 60px;
+
+
 }
+
 
 .listWrap{
     counter-reset: my-counter;
+   
 }
 
 .listWrap li {
@@ -124,8 +126,12 @@ body {
 .list:before {
     content: counter(my-counter);
     counter-increment: my-counter;
-    font-size: 80px;
+    font-size: 50px;
     margin: 5px;
+}
+
+.bottomChart {
+    
 }
 
 #chartdiv {
@@ -144,18 +150,49 @@ body {
 }
 
 #chartdiv2 {
-    background: #3f3f4f;
-    color: #ffffff;
     width: 100%;
     height: 500px;
     font-size: 11px;
 }
 
 
-#chartdiv3 {background: #282828 url('http://www.amcharts.com/lib/3/patterns/chalk/bg.jpg');color: #fff;  
+#chartdiv3 {
     width       : 100%;
     height      : 500px;
     font-size   : 11px; 
     font-family:  'Josefin Sans', sans-serif;
 }                                       
+ 
+
+
+.dropdown-button {
+    background-color: red;
+}
+
+.left-align {
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+.center-align {
+    margin-top: -60px;
+    margin-bottom: 0px;
+
+}
+
+.hr {
+    float: left;
+    margin-top: -20px;
+    width: 90%;
+    border: 0;
+    border-bottom: 2px dashed white;
+    background: transparent;
+
+}
+
+
+
+
+
+
 
