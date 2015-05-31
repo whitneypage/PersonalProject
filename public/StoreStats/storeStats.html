@@ -2,7 +2,7 @@
     <div class="navbar-fixed" ng-show="navBar">
         <nav>
             <div class="nav-wrapper">
-                <a class="brand-logo" href="/#/">Login</a>
+                <a class="brand-logo" href="/#/">LOGIN</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/#/storeDashboard">DASHBOARD</a></li>
                     <li class="active"><a href="/#/storeStats">STORE STATS</a></li>
@@ -14,7 +14,7 @@
     <div class="navbar-fixed" ng-show="!navBar">
         <nav>
             <div class="nav-wrapper">
-                <a class="brand-logo" href="/#/">Login</a>
+                <a class="brand-logo" href="/#/">LOGIN</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/#/userStats">DASHBOARD</a></li>
                     <li class="active"><a href="/#/storeStats">STORE STATS</a></li>
@@ -24,9 +24,13 @@
         </nav>
     </div>
     <div class="storeStats container">
+    <div class="ssTitle row">
+        <h1> TOP RANKED LOCATIONS </h1>
+        <p> by average daily sales </p>
+    </div>
         <div class="listWrap row col s4">
             <ul ng-repeat="info in avgArr">
-                <li class="list"> {{info.storeName}} {{info.storeNumber}} - ${{info.salesAvg}}</li>
+                <li class="list"> {{info.storeName}} - ${{info.salesAvg}}</li>
             </ul>
         </div>
     </div>

@@ -16,7 +16,6 @@
             <p class="left-align">HELLO</p>
             <p class="center-align">{{userName}}!</p>
             <hr class="hr">
-
         </div>
         <div class="chartOne">
             <div class="userChart col s6 offset-s1">
@@ -24,38 +23,54 @@
             </div>
         </div>
     </div>
-   <!--  <div class="listRow row">
-        <div class="listWrap col s4">
-            <ul ng-repeat="info in avgArr">
-                <li class="list"> {{info.firstName}} {{info.lastName}} - ${{info.salesAvg}}</li>
-            </ul>
+    <div class="try row col s12">
+    <div class="col s2">
+            <div class="topTitle">
+                <h1>THE</h1> 
+                <h1 class="top">TOP</h1>
+                <h1 class="five">FIVE</h1>
+                <p>* by avg. daily sales</p>
+                </div>
         </div>
-    </div> -->
-    <div class="Try row col s12">
-       <div class="col s2">
-            <h1>#1</h1>
-           {{avgArr[0].firstName}}
-       </div>
-        <div class="col s2">
-        <h1>#2</h1>
-           {{avgArr[1].firstName}}
-       </div>
-       <h1>#3</h1>
-        <div class="col s2">
-           {{avgArr[2].firstName}}
-       </div>
-        <div class="col s2">
-        <h1>#4</h1>
-            {{avgArr[3].firstName}}
-       </div>
-        <div class="col s2">
-        <h1>#5</h1>
-           {{avgArr[4].firstName}}
-       </div>
 
+        <div class="col s2">
+            <div class="avg">
+                <h1>#1</h1> 
+                {{avgArr[0].firstName}} {{avgArr[0].lastName}}
+                </br>
+                ${{avgArr[0].salesAvg}}</div>
+        </div>
+        <div class="col s2">
+            <div class="avg">
+                <h1>#2</h1> 
+                {{avgArr[1].firstName}} {{avgArr[1].lastName}}
+                </br>
+                ${{avgArr[1].salesAvg}}</div>
+        </div>
+        <div class="col s2">
+            <div class="avg">
+                <h1>#3</h1> 
+                {{avgArr[2].firstName}} {{avgArr[2].lastName}}
+                </br>
+                ${{avgArr[2].salesAvg}}</div>
+        </div>
+        <div class="col s2">
+            <div class="avg">
+                <h1>#4</h1> 
+                {{avgArr[3].firstName}} {{avgArr[3].lastName}}
+                </br>
+                ${{avgArr[3].salesAvg}}</div>
+        </div>
+        <div class="col s2">
+            <div class="avg">
+                <h1>#5</h1> 
+                {{avgArr[4].firstName}} {{avgArr[4].lastName}}
+                </br>
+                ${{avgArr[4].salesAvg}}</div>
+        </div>
     </div>
     <div class="monthGraphRow row">
-     <div class="bottomChart col s6 offset-s2">
+        <div class="bottomChart col s6 offset-s2">
             <div class="userChart2">
                 <div id="chartdiv2"></div>
             </div>

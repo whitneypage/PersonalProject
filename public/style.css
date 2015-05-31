@@ -6,6 +6,8 @@ body {
 }
 
 .loginContainer {
+    background: url("86H.jpg");
+    background-size: cover;
     height: 100%;
     width: 100%;
 }
@@ -16,23 +18,25 @@ body {
 }
 
 .appName p {
-    padding-left: 20px;
+    padding-left: 25px;
     font-family: 'Josefin Sans', sans-serif;
-    color: black;
+    color: white;
     margin: 0;
     font-size: 66px;
 }
 
 .LoginOptions p {
+    padding-left: 30px;
     font-family: 'Josefin Sans', sans-serif;
-    color: black;
+    color: white;
     margin: 0;
     font-size: 25px;
 }
 
 .loginForm {
-    padding-top: 15px;
-    background-color: rgba(255, 255, 255, 0.5);
+    padding-left: 30px;
+    padding-top: 40px;
+   /* background-color: rgba(255, 255, 255, 0.5);*/
 }
 /* label focus color */
 
@@ -107,31 +111,15 @@ body {
  font-size: 88px;
  background-color: red;
  background-size: 40% auto;
- margin-top: 60px;
+ margin-top: 80px;
 
 
 }
 
 
-.listWrap{
-    counter-reset: my-counter;
-   
-}
 
-.listWrap li {
-    font-size: 30px;
-
-}
-
-.list:before {
-    content: counter(my-counter);
-    counter-increment: my-counter;
-    font-size: 50px;
-    margin: 5px;
-}
-
-.bottomChart {
-    
+.chartOne {
+    margin-top: 40px;
 }
 
 #chartdiv {
@@ -191,7 +179,111 @@ body {
 }
 
 
+.try {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding-top: 50px;
+    border-top: 3px dashed red;
+    border-bottom: 3px dashed red;
+}
 
+.avg {
+    margin-top: 20px;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-bottom: 20px;
+    border-top: 2px dashed red;
+     border-bottom: 2px dashed red;
+     font-size: 15px;
+    text-align: center;
+vertical-align: middle;
+}
+
+.topTitle{
+    margin-top: -20px;
+    padding-bottom: 20px;
+    text-align: center;
+vertical-align: middle;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.topTitle p{
+    margin-top: -10px;
+    text-align: center;
+vertical-align: middle;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+}
+.top{
+    margin-top: -20px;
+}
+
+.five{
+    margin-top: -20px;
+    margin-bottom: 0px;
+}
+
+
+
+.storeStats {
+    position: relative;
+    height: 300%;
+    width: 200%;
+    overflow: hidden;
+    background-color: red;
+    padding-top: 20px;
+    padding-bottom: 100px;
+
+}
+
+.storeStats:before { 
+    content: '';
+    position: absolute;
+    left: 25%;
+    width: 100%; 
+    height: 250%; 
+    background-color: rgb(255, 255, 255); /* fallback */
+    background-color: rgba(255, 255, 255, 0.3);
+    top: 0;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.listWrap{
+    counter-reset: my-counter;
+   
+}
+
+.listWrap li {
+    font-size: 30px;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+     text-align: center;
+vertical-align: middle;
+
+
+}
+
+.list:before {
+    content: counter(my-counter);
+    counter-increment: my-counter;
+    font-size: 75px;
+    color: white;
+    margin: 5px;
+}
+
+.ssTitle {
+    font-size: 16px;
+    margin-top: 0px;
+    color: white;
+     font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 5px;
+      text-align: center;
+vertical-align: middle;
+}
 
 
 
