@@ -12,32 +12,34 @@
         </nav>
     </div>
     <div class="serverStats row">
-        <div class="listWrap3 col s4">
-            <ul ng-repeat="info in avgArr" ng-click='$parent.selected = info'>
+        <div class="listWrap3 col s5">
+            <ul class="serverStats" ng-repeat="info in avgArr" ng-click='$parent.selected = info'>
                 <li class="list3" ng-click="doSelect(info.firstName, info.lastName)"> {{info.firstName}} {{info.lastName}} - ${{info.salesAvg}}</li>
             </ul>
         </div>
-        <div class="col s2">
-            <!-- Dropdown Trigger -->
-            <a class='dropdown-button btn' data-activates='dropdown1'>Choose a Month</a>
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content'>
-                <li ng-click="userDatabyMonth(Jan.firstday, Jan.lastday)"><a>January</a></li>
-                <li ng-click="userDatabyMonth(Feb.firstday, Feb.lastday)"><a>February</a></li>
-                <li ng-click="userDatabyMonth(Mar.firstday, Mar.lastday)"><a>March</a></li>
-                <li ng-click="userDatabyMonth(Apr.firstday, Apr.lastday)"><a>April</a></li>
-                <li ng-click="userDatabyMonth(May.firstday, May.lastday)"><a>May</a></li>
-                <li ng-click="userDatabyMonth(Jun.firstday, Jun.lastday)"><a>June</a></li>
-                <li ng-click="userDatabyMonth(Jul.firstday, Jul.lastday)"><a>July</a></li>
-                <li ng-click="userDatabyMonth(Aug.firstday, Aug.lastday)"><a>August</a></li>
-                <li ng-click="userDatabyMonth(Sep.firstday, Sep.lastday)"><a>September</a></li>
-                <li ng-click="userDatabyMonth(Oct.firstday, Oct.lastday)"><a>October</a></li>
-                <li ng-click="userDatabyMonth(Nov.firstday, Nov.lastday)"><a>November</a></li>
-                <li ng-click="userDatabyMonth(Dec.firstday, Dec.lastday)"><a>December</a></li>
-            </ul>
-        </div>
-        <div class="userChart2 col s6">
-        <h3>{{firstName}} {{lastName}}</h3>
+        <div class="userChart2 col s7">
+            <div class="row">
+                <div class="col s10">
+                    <h3>{{firstName}} {{lastName}}</h3>
+                </div>
+                <div class="col s2">
+                    <a class='dropdown-button btn' data-activates='dropdown1'>MAY</a>
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li ng-click="userDatabyMonth(Jan.firstday, Jan.lastday)"><a>January</a></li>
+                        <li ng-click="userDatabyMonth(Feb.firstday, Feb.lastday)"><a>February</a></li>
+                        <li ng-click="userDatabyMonth(Mar.firstday, Mar.lastday)"><a>March</a></li>
+                        <li ng-click="userDatabyMonth(Apr.firstday, Apr.lastday)"><a>April</a></li>
+                        <li ng-click="userDatabyMonth(May.firstday, May.lastday)"><a>May</a></li>
+                        <li ng-click="userDatabyMonth(Jun.firstday, Jun.lastday)"><a>June</a></li>
+                        <li ng-click="userDatabyMonth(Jul.firstday, Jul.lastday)"><a>July</a></li>
+                        <li ng-click="userDatabyMonth(Aug.firstday, Aug.lastday)"><a>August</a></li>
+                        <li ng-click="userDatabyMonth(Sep.firstday, Sep.lastday)"><a>September</a></li>
+                        <li ng-click="userDatabyMonth(Oct.firstday, Oct.lastday)"><a>October</a></li>
+                        <li ng-click="userDatabyMonth(Nov.firstday, Nov.lastday)"><a>November</a></li>
+                        <li ng-click="userDatabyMonth(Dec.firstday, Dec.lastday)"><a>December</a></li>
+                    </ul>
+                </div>
+            </div>
             <div id="chartdiv2"></div>
         </div>
     </div>
@@ -59,7 +61,7 @@ $(".dropdown-content li a").click(function() {
     $(".btn").val($(this).text());
 });
 
-$(".listWrap li").click( function() {
+$(".listWrap li").click(function() {
     $(".listWrap li").css("color", "")
 })
 </script>

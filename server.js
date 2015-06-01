@@ -274,16 +274,13 @@ app.get('/api/server', function(req, res) {
 	})
 })
 
-// getting specific locations sales arrays
-// app.get('/api/dash/:locationId', function(req, res) {
-// 	locationSchema
-//     .find({_id: req.params.locationId}, 'sales', function(err, data) {
-//     	if (err) return res.status(500).send(err);
-//     	res.json(data);
-//     })
 
-// })
-
+app.delete('/api/removeone/:userId', function(req, res){
+    User.remove({_id: req.params.userId}, function(err, data) {
+          if (err) return res.status(500).send(err);
+            res.send(data);
+        });
+})
 
 
 

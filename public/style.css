@@ -279,6 +279,7 @@ body {
 }
 
 .listWrap li {
+    font-family: 'Josefin Sans', sans-serif;
     font-size: 30px;
     color: white;
     letter-spacing: 5px;
@@ -288,6 +289,7 @@ body {
 }
 
 .list:before {
+    font-family: "Roboto", sans-serif;
     content: counter(my-counter);
     counter-increment: my-counter;
     font-size: 75px;
@@ -340,7 +342,9 @@ body {
 
 
 
-
+.dropdown1 {
+    color: black;
+}
 
 
 
@@ -395,29 +399,42 @@ th {
 
 
 .listWrap3 {
+    margin-top: 55px;
     counter-reset: my-counter;
 }
 
+.listWrap3 li:hover {
+    color: red;
+}
+
 .listWrap3 li {
-    font-size: 30px;
+    font-size: 22px;
+    font-family: 'Josefin Sans', sans-serif;
     color: black;
     letter-spacing: 5px;
     text-transform: uppercase;
-    text-align: center;
-    vertical-align: middle;
 }
 
 .list3:before {
+    font-family: "Roboto", sans-serif;
     content: counter(my-counter);
     counter-increment: my-counter;
-    font-size: 75px;
+    font-size: 70px;
     color: black;
     margin: 5px;
 }
 
+h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    color: red;
+    letter-spacing: 5px;
+    text-transform: uppercase;
 
+}
 
-
+.userChart2 {
+    margin-top: 55px;
+}
 
 
 

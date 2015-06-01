@@ -205,37 +205,72 @@ app.controller('ServerStatsCtrl', function($scope, mainService) {
 
             var chart2 = AmCharts.makeChart("chartdiv2", {
                 "type": "serial",
-                "theme": "dark",
+                "theme": "patterns",
                 "marginRight": 70,
                 "path": "http://www.amcharts.com/lib/3/",
                 "dataProvider": [{
                     "dayOfWeek": "Sunday",
                     "sales": sunAvg,
-                    "color": "#FF0F00"
+                    "color": "#FF0F00",
+                    "pattern": {
+                        "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                        "width": 4,
+                        "height": 4
+                    }
                 }, {
                     "dayOfWeek": "Monday",
                     "sales": monAvg,
-                    "color": "#F8FF01"
+                    "color": "#F8FF01",
+                    "pattern": {
+                        "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                        "width": 4,
+                        "height": 4
+                    }
                 }, {
                     "dayOfWeek": "Tuesday",
                     "sales": tueAvg,
-                    "color": "#B0DE09"
+                    "color": "#B0DE09",
+                    "pattern": {
+                        "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                        "width": 4,
+                        "height": 4
+                    }
                 }, {
                     "dayOfWeek": "Wednesday",
                     "sales": wedAvg,
-                    "color": "#0D8ECF"
+                    "color": "#0D8ECF",
+                    "pattern": {
+                        "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                        "width": 4,
+                        "height": 4
+                    }
                 }, {
                     "dayOfWeek": "Thursday",
                     "sales": thuAvg,
-                    "color": "#2A0CD0"
+                    "color": "#2A0CD0",
+                    "pattern": {
+                        "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                        "width": 4,
+                        "height": 4
+                    }
                 }, {
                     "dayOfWeek": "Friday",
                     "sales": friAvg,
-                    "color": "#8A0CCF"
+                    "color": "#8A0CCF",
+                    "pattern": {
+                        "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                        "width": 4,
+                        "height": 4
+                    }
                 }, {
                     "dayOfWeek": "Saturday",
                     "sales": satAvg,
-                    "color": "#CD0D74"
+                    "color": "#CD0D74",
+                    "pattern": {
+                        "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                        "width": 4,
+                        "height": 4
+                    }
                 }],
                 "valueAxes": [{
                     "axisAlpha": 0,
@@ -243,13 +278,20 @@ app.controller('ServerStatsCtrl', function($scope, mainService) {
                     "title": "Monthly Daily Sales Average"
                 }],
                 "startDuration": 1,
+                "startEffect": "easeInSine",
                 "graphs": [{
                     "balloonText": "<b>[[category]]: [[value]]</b>",
                     "fillColorsField": "color",
                     "fillAlphas": 0.9,
                     "lineAlpha": 0.2,
                     "type": "column",
-                    "valueField": "sales"
+                    "valueField": "sales",
+                    "patternField": "pattern",
+                    "pattern": {
+                        "url": "http://www.amcharts.com/lib/3/patterns/black/pattern2.png",
+                        width: 4,
+                        height: 4
+                    }
                 }],
                 "chartCursor": {
                     "categoryBalloonEnabled": false,

@@ -99,23 +99,26 @@ app.controller('userStatsCtrl', function($scope, mainService) {
     var curr = new Date;
     var first = curr.getDate() - curr.getDay();
     var last = first + 6;
-    var firstday = new Date(curr.setDate(first - 1));
-    var lastday = new Date(curr.setDate(last));
+    // var firstday = new Date(curr.setDate(first - 1));
+    // var lastday = new Date(curr.setDate(last));
+   var firstday = new Date(2015, 4, 30, 23);
+    var lastday = new Date(2015, 5, 6, 24);
+    console.log("FL", firstday, lastday);
     // 
 
     $scope.userDatabyWeek = function() {
             mainService.userData().then(function(data) {
-                // console.log(data);
+                console.log(data);
                 var newSalesArr = data[0].sales;
-                // console.log(newSalesArr);
+                console.log(newSalesArr);
                 for (var p = 0; p < newSalesArr.length; p++) {
                     var currDate = new Date(newSalesArr[p].date)
                     currDate = new Date(currDate.getTime() + (currDate.getTimezoneOffset() * 60000));
-                    // console.log(p);
-                    // console.log(currDate);
+                    console.log(p);
+                    console.log(currDate);
                     if (currDate >= firstday && currDate <= lastday) {
                         var dayWeek = currDate.getDay();
-                        // console.log(currDate, dayWeek);
+                        console.log(currDate, dayWeek);
 
                         switch (dayWeek) {
                             case 0:
