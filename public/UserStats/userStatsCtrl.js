@@ -8,7 +8,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
     $scope.rank;
 
 
-    
+
 
     var compareNumbers = function(a, b) {
         return a - b;
@@ -366,44 +366,87 @@ app.controller('userStatsCtrl', function($scope, mainService) {
                     "dataProvider": [{
                         "dayOfWeek": "Sunday",
                         "sales": sunAvg,
-                        "color" : "#F8FF01"
+                        "color": "#F8FF01",
+                        "pattern": {
+                            "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                            "width": 4,
+                            "height": 4
+                        }
                     }, {
                         "dayOfWeek": "Monday",
                         "sales": monAvg,
-                        "color": "#F8FF01"
+                        "color": "#F8FF01",
+
+                        "pattern": {
+                            "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                            "width": 4,
+                            "height": 4
+                        }
                     }, {
                         "dayOfWeek": "Tuesday",
                         "sales": tueAvg,
-                        "color": "#B0DE09"
+                        "color": "#B0DE09",
+                        "pattern": {
+                            "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                            "width": 4,
+                            "height": 4
+                        }
                     }, {
                         "dayOfWeek": "Wednesday",
                         "sales": wedAvg,
-                        "color": "#0D8ECF"
+                        "color": "#0D8ECF",
+                        "pattern": {
+                            "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                            "width": 4,
+                            "height": 4
+                        }
                     }, {
                         "dayOfWeek": "Thursday",
                         "sales": thuAvg,
-                        "color": "#2A0CD0"
+                        "color": "#2A0CD0",
+                        "pattern": {
+                            "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                            "width": 4,
+                            "height": 4
+                        }
                     }, {
                         "dayOfWeek": "Friday",
                         "sales": friAvg,
-                        "color": "#8A0CCF"
+                        "color": "#8A0CCF",
+                        "pattern": {
+                            "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                            "width": 4,
+                            "height": 4
+                        }
                     }, {
                         "dayOfWeek": "Saturday",
                         "sales": satAvg,
-                        "color": "#CD0D74"
+                        "color": "#CD0D74",
+                        "pattern": {
+                            "url": "http://www.amcharts.com/lib/3/patterns/black/pattern3.png",
+                            "width": 4,
+                            "height": 4
+                        }
                     }],
                     "valueAxes": [{
                         "axisAlpha": 0,
                         "position": "left",
                     }],
                     "startDuration": 1,
+                    "startEffect": "easeInSine",
                     "graphs": [{
                         "balloonText": "<b>[[category]]: [[value]]</b>",
                         "fillColorsField": "color",
                         "fillAlphas": 0.9,
                         "lineAlpha": 0.2,
                         "type": "column",
-                        "valueField": "sales"
+                        "valueField": "sales",
+                        "patternField": "pattern",
+                        "pattern": {
+                            "url": "http://www.amcharts.com/lib/3/patterns/black/pattern2.png",
+                            width: 4,
+                            height: 4
+                        }
                     }],
                     "chartCursor": {
                         "categoryBalloonEnabled": false,
@@ -439,159 +482,159 @@ app.controller('userStatsCtrl', function($scope, mainService) {
 
     $scope.userDatabyMonth($scope.May.firstday, $scope.May.lastday);
 
-    var sArr = [];
-    var mArr = [];
-    var tArr = [];
-    var wArr = [];
-    var thArr = [];
-    var fArr = [];
-    var saArr = [];
+    // var sArr = [];
+    // var mArr = [];
+    // var tArr = [];
+    // var wArr = [];
+    // var thArr = [];
+    // var fArr = [];
+    // var saArr = [];
 
-    var sunTip = 0;
-    var monTip = 0;
-    var tueTip = 0;
-    var wedTip = 0;
-    var thuTip = 0;
-    var friTip = 0;
-    var satTip = 0;
-
-
-    $scope.tipDataChart = function() {
-            mainService.getTipsData().then(function(data) {
-                    console.log("getTipsData", data);
-                    for (var c = 0; c < data.length; c++) {
-                        var currDate = new Date(data[c].tipDate)
-                        currDate = new Date(currDate.getTime() + (currDate.getTimezoneOffset() * 60000));
-                        currDate = currDate.getDay();
-
-                        switch (currDate) {
-                            case 0:
-                                sArr.push(data[c].tipAmount)
-                                break;
-                            case 1:
-                                mArr.push(data[c].tipAmount)
-                                break;
-                            case 2:
-                                tArr.push(data[c].tipAmount)
-                                break;
-                            case 3:
-                                wArr.push(data[c].tipAmount)
-                                break;
-                            case 4:
-                                thArr.push(data[c].tipAmount)
-                                break;
-                            case 5:
-                                fArr.push(data[c].tipAmount)
-                                break;
-                            case 6:
-                                saArr.push(data[c].tipAmount)
-                                break;
-                            default:
-                                break;
-
-                        } //ends switch
+    // var sunTip = 0;
+    // var monTip = 0;
+    // var tueTip = 0;
+    // var wedTip = 0;
+    // var thuTip = 0;
+    // var friTip = 0;
+    // var satTip = 0;
 
 
+    // $scope.tipDataChart = function() {
+    //         mainService.getTipsData().then(function(data) {
+    //                 console.log("getTipsData", data);
+    //                 for (var c = 0; c < data.length; c++) {
+    //                     var currDate = new Date(data[c].tipDate)
+    //                     currDate = new Date(currDate.getTime() + (currDate.getTimezoneOffset() * 60000));
+    //                     currDate = currDate.getDay();
 
-                    } // ends for 
+    //                     switch (currDate) {
+    //                         case 0:
+    //                             sArr.push(data[c].tipAmount)
+    //                             break;
+    //                         case 1:
+    //                             mArr.push(data[c].tipAmount)
+    //                             break;
+    //                         case 2:
+    //                             tArr.push(data[c].tipAmount)
+    //                             break;
+    //                         case 3:
+    //                             wArr.push(data[c].tipAmount)
+    //                             break;
+    //                         case 4:
+    //                             thArr.push(data[c].tipAmount)
+    //                             break;
+    //                         case 5:
+    //                             fArr.push(data[c].tipAmount)
+    //                             break;
+    //                         case 6:
+    //                             saArr.push(data[c].tipAmount)
+    //                             break;
+    //                         default:
+    //                             break;
 
-                    console.log("thArr", thArr);
-                    var sunTip = getAvg(sArr);
-                    var monTip = getAvg(mArr);
-                    var tueTip = getAvg(tArr);
-                    var wedTip = getAvg(wArr);
-                    var thuTip = getAvg(thArr);
-                    var friTip = getAvg(fArr);
-                    var satTip = getAvg(saArr);
-                    console.log("ThuAvg", thuTip);
-
-                    var chart3 = AmCharts.makeChart("chartdiv3", {
-                        "type": "serial",
-                        "theme": "light",
-                        "marginRight": 70,
-                        "path": "http://www.amcharts.com/lib/3/",
-                        "dataProvider": [{
-                            "dayOfWeek": "Sunday",
-                            "tips": sunTip,
-                            "color": "#FF0F00"
-                        }, {
-                            "dayOfWeek": "Monday",
-                            "tips": monTip,
-                            "color": "#F8FF01"
-                        }, {
-                            "dayOfWeek": "Tuesday",
-                            "tips": tueTip,
-                            "color": "#B0DE09"
-                        }, {
-                            "dayOfWeek": "Wednesday",
-                            "tips": wedTip,
-                            "color": "#0D8ECF"
-                        }, {
-                            "dayOfWeek": "Thursday",
-                            "tips": thuTip,
-                            "color": "#2A0CD0"
-                        }, {
-                            "dayOfWeek": "Friday",
-                            "tips": friTip,
-                            "color": "#8A0CCF"
-                        }, {
-                            "dayOfWeek": "Saturday",
-                            "tips": satTip,
-                            "color": "#CD0D74"
-                        }],
-                        "valueAxes": [{
-                            "axisAlpha": 0,
-                            "position": "left",
-                            "title": "Daily Tip Average"
-                        }],
-                        "startDuration": 1,
-                        "graphs": [{
-                            "balloonText": "<b>[[category]]: [[value]]</b>",
-                            "fillColorsField": "color",
-                            "fillAlphas": 0.9,
-                            "lineAlpha": 0.2,
-                            "type": "column",
-                            "valueField": "tips"
-                        }],
-                        "chartCursor": {
-                            "categoryBalloonEnabled": false,
-                            "cursorAlpha": 0,
-                            "zoomable": false
-                        },
-                        "categoryField": "dayOfWeek",
-                        "fontSize": 12,
-                        "categoryAxis": {
-                            "gridPosition": "start",
-                            "labelRotation": 45
-                        },
-                        "export": {
-                            "enabled": true
-                        }
-
-                    });
+    //                     } //ends switch
 
 
-                }) // ends Main Service
 
-            var sArr = [];
-            var mArr = [];
-            var tArr = [];
-            var wArr = [];
-            var thArr = [];
-            var fArr = [];
-            var saArr = [];
-        } // ends tipsDataChart
+    //                 } // ends for 
 
-    $scope.tipDataChart();
+    //                 console.log("thArr", thArr);
+    //                 var sunTip = getAvg(sArr);
+    //                 var monTip = getAvg(mArr);
+    //                 var tueTip = getAvg(tArr);
+    //                 var wedTip = getAvg(wArr);
+    //                 var thuTip = getAvg(thArr);
+    //                 var friTip = getAvg(fArr);
+    //                 var satTip = getAvg(saArr);
+    //                 console.log("ThuAvg", thuTip);
+
+    //                 var chart3 = AmCharts.makeChart("chartdiv3", {
+    //                     "type": "serial",
+    //                     "theme": "light",
+    //                     "marginRight": 70,
+    //                     "path": "http://www.amcharts.com/lib/3/",
+    //                     "dataProvider": [{
+    //                         "dayOfWeek": "Sunday",
+    //                         "tips": sunTip,
+    //                         "color": "#FF0F00"
+    //                     }, {
+    //                         "dayOfWeek": "Monday",
+    //                         "tips": monTip,
+    //                         "color": "#F8FF01"
+    //                     }, {
+    //                         "dayOfWeek": "Tuesday",
+    //                         "tips": tueTip,
+    //                         "color": "#B0DE09"
+    //                     }, {
+    //                         "dayOfWeek": "Wednesday",
+    //                         "tips": wedTip,
+    //                         "color": "#0D8ECF"
+    //                     }, {
+    //                         "dayOfWeek": "Thursday",
+    //                         "tips": thuTip,
+    //                         "color": "#2A0CD0"
+    //                     }, {
+    //                         "dayOfWeek": "Friday",
+    //                         "tips": friTip,
+    //                         "color": "#8A0CCF"
+    //                     }, {
+    //                         "dayOfWeek": "Saturday",
+    //                         "tips": satTip,
+    //                         "color": "#CD0D74"
+    //                     }],
+    //                     "valueAxes": [{
+    //                         "axisAlpha": 0,
+    //                         "position": "left",
+    //                         "title": "Daily Tip Average"
+    //                     }],
+    //                     "startDuration": 1,
+    //                     "graphs": [{
+    //                         "balloonText": "<b>[[category]]: [[value]]</b>",
+    //                         "fillColorsField": "color",
+    //                         "fillAlphas": 0.9,
+    //                         "lineAlpha": 0.2,
+    //                         "type": "column",
+    //                         "valueField": "tips"
+    //                     }],
+    //                     "chartCursor": {
+    //                         "categoryBalloonEnabled": false,
+    //                         "cursorAlpha": 0,
+    //                         "zoomable": false
+    //                     },
+    //                     "categoryField": "dayOfWeek",
+    //                     "fontSize": 12,
+    //                     "categoryAxis": {
+    //                         "gridPosition": "start",
+    //                         "labelRotation": 45
+    //                     },
+    //                     "export": {
+    //                         "enabled": true
+    //                     }
+
+    //                 });
+
+
+    //             }) // ends Main Service
+
+    //         var sArr = [];
+    //         var mArr = [];
+    //         var tArr = [];
+    //         var wArr = [];
+    //         var thArr = [];
+    //         var fArr = [];
+    //         var saArr = [];
+    //     } // ends tipsDataChart
+
+    // $scope.tipDataChart();
 
     $scope.getUserName = function() {
-       var name  = mainService.getUserName()
+        var name = mainService.getUserName()
         $scope.userName = name.toUpperCase();
 
     }
-    
 
-  $scope.getUserName();
+
+    $scope.getUserName();
 
 
 });

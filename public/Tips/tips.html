@@ -41,23 +41,34 @@
                 <div class="row">
                     <h4>Tips</h4>
                 </div>
-                <table class="hoverable">
-                    <thead>
-                        <tr>
-                            <th data-field="first_name">Date</th>
-                            <th data-field="last_name">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="tip in tipsList track by $index | filter:search">
-                            <td>{{tip.date}}</td>
-                            <td>{{tip.amount}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="tipsTable">
+                    <table class="hoverable">
+                        <thead>
+                            <tr>
+                                <th data-field="first_name">Date</th>
+                                <th data-field="last_name">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="tip in tipsList track by $index | filter:search">
+                                <td>{{tip.date}}</td>
+                                <td>{{tip.amount}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+    <div class="tipsChart row">
+        <div class="tct">
+            <p>DAILY TIP AVERAGE</p>
+        </div>
+        <div class="userChart3 col s10 offset-s1">
+            <div id="chartdiv3"></div>
+        </div>
+    </div>
+</div>
 </div>
 <script>
 $('.datepicker').pickadate({

@@ -2,7 +2,7 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <a class="brand-logo" href="/#/">Login</a>
+                <a class="brand-logo" href="/#/storeLogin">CHECK IT</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="/#/storeDashboard">DASHBOARD</a></li>
                     <li><a href="/#/storeStats">STORE STATS</a></li>
@@ -12,9 +12,9 @@
         </nav>
     </div>
     <div class="serverStats row">
-        <div class="listWrap col s4">
+        <div class="listWrap3 col s4">
             <ul ng-repeat="info in avgArr" ng-click='$parent.selected = info'>
-                <li class="list" ng-click="doSelect(info.firstName, info.lastName)"> {{info.firstName}} {{info.lastName}} - ${{info.salesAvg}}</li>
+                <li class="list3" ng-click="doSelect(info.firstName, info.lastName)"> {{info.firstName}} {{info.lastName}} - ${{info.salesAvg}}</li>
             </ul>
         </div>
         <div class="col s2">

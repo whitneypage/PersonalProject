@@ -111,8 +111,8 @@ body {
 
 .nav-wrapper a {
     font-family: 'Josefin Sans', sans-serif;
-    letter-spacing: 5px;
-    font-size: 20px;
+    letter-spacing: 3px;
+    font-size: 18px;
     color: black;
     padding-left: 15px;
 }
@@ -178,6 +178,11 @@ body {
 .dropdown-button {
     background-color: red;
 }
+
+.btn:hover {
+    background-color: red;
+}
+
 
 .left-align {
     margin-top: 30px;
@@ -276,7 +281,6 @@ body {
 .listWrap li {
     font-size: 30px;
     color: white;
-    font-family: 'Josefin Sans', sans-serif;
     letter-spacing: 5px;
     text-transform: uppercase;
     text-align: center;
@@ -310,12 +314,29 @@ body {
     vertical-align: middle;
 }
 
+.picker__date-display {
+    background-color: red;
+}
 
+.picker__weekday-display {
+    background-color: red;
+}
 
+.picker__date-display {
+    background-color: red;
+}
 
+.picker__today {
+    color: red;
+}
 
+.picker__close {
+        color: red;
+}
 
-
+.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+    background-color: red;
+}
 
 
 
@@ -341,8 +362,62 @@ th {
     letter-spacing: 5px;
 }
 
-.ui-datepicker .ui-widget-content {
-    background: #333;
-    border: 1px solid #555;
-    color: #EEE;
+
+.tipsTable {
+    height: 300px;
+    overflow: auto;
 }
+
+.tipsChart {
+    margin-top: 150px;
+    background-color: red;
+}
+
+.tct p {
+     color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 5px;
+    font-size: 55px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+/*Store Dash*/
+
+.serverTable {
+    height: 600px;
+    overflow: auto;
+}
+
+
+/*Store Server Dash*/
+
+
+.listWrap3 {
+    counter-reset: my-counter;
+}
+
+.listWrap3 li {
+    font-size: 30px;
+    color: black;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.list3:before {
+    content: counter(my-counter);
+    counter-increment: my-counter;
+    font-size: 75px;
+    color: black;
+    margin: 5px;
+}
+
+
+
+
+
+
+
