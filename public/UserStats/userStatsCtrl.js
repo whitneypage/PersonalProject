@@ -186,7 +186,9 @@ app.controller('userStatsCtrl', function($scope, mainService) {
                     "valueAxes": [{
                         "axisAlpha": 0,
                         "position": "left",
-                        "title": "THIS WEEK SALES"
+                        "title": "THIS WEEKS SALES",
+                        "titleColor": "#F60404",
+                        "titleFontSize": 25
                     }],
                     "startDuration": 1,
                     "graphs": [{
@@ -203,6 +205,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
                         "zoomable": false
                     },
                     "categoryField": "dayOfWeek",
+                    "fontSize": 12,
                     "categoryAxis": {
                         "gridPosition": "start",
                         "labelRotation": 45
@@ -392,7 +395,6 @@ app.controller('userStatsCtrl', function($scope, mainService) {
                     "valueAxes": [{
                         "axisAlpha": 0,
                         "position": "left",
-                        "title": "MONTHLY DAILY SALES AVG"
                     }],
                     "startDuration": 1,
                     "graphs": [{
@@ -409,6 +411,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
                         "zoomable": false
                     },
                     "categoryField": "dayOfWeek",
+                    "fontSize": 12,
                     "categoryAxis": {
                         "gridPosition": "start",
                         "labelRotation": 45
@@ -556,6 +559,7 @@ app.controller('userStatsCtrl', function($scope, mainService) {
                             "zoomable": false
                         },
                         "categoryField": "dayOfWeek",
+                        "fontSize": 12,
                         "categoryAxis": {
                             "gridPosition": "start",
                             "labelRotation": 45

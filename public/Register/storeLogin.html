@@ -1,89 +1,95 @@
 <div class="storeLoginContainer">
-    <div class="appName">
-        <p>CHECK IT</p>
+    <div class="slc row">
+        <div class="appName col s6">
+            <p>CHECK IT</p>
+        </div>
+        <div class="LoginOptions col s2 right">
+            <a href="/#/">
+                <p>STAFF LOGIN<i class="small mdi-navigation-arrow-forward"></i></p>
+            </a>
+        </div>
     </div>
-    <div class="LoginOptions">
-        <a href="/#/">
-            <p>STAFF LOGIN<i class="small mdi-navigation-arrow-forward"></i></p>
-        </a>
-    </div>
-    <div class="loginForm">
-        <div class="row">
-            <div class="col s2 offset-s4">
+    <div class="loginForm2">
+        <div class="logOrReg row">
+            <div class="loginButton col s1">
                 <a href="#" class="active" id="login-form-link">
                     <p>LOGIN</p>
                 </a>
             </div>
-            <div class="col s2">
+            <div class="regButton col s2">
                 <a href="#" id="register-form-link">
                     <p> or REGISTER</p>
                 </a>
             </div>
         </div>
-        <form id="login-form" class="col s8">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="email" ng-model="loginStoreEmail" type="email" class="validate green-text">
-                    <label for="email">Email</label>
+        <div class="row">
+            <form id="login-form" class="col s6">
+                <div class="row">
+                    <div class="input-field col s7">
+                        <input id="email" ng-model="loginStoreEmail" type="email" class="validate red-text">
+                        <label for="email">Email</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="password" ng-model="loginStorePassword" type="password" class="validate green-text">
-                    <label for="password">Password</label>
+                <div class="row">
+                    <div class="input-field col s7">
+                        <input id="password" ng-model="loginStorePassword" type="password" class="validate red-text">
+                        <label for="password">Password</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col s2 offset-s5">
-                    <button class="btn-floating btn-large waves-effect waves-light green" type="submit" name="action" ng-click="loginStore()">
-                        <i class="mdi-navigation-arrow-forward"></i>
-                    </button>
+                <div class="row">
+                    <div class="col s2 offset-s5">
+                        <button class="btn-floating btn-large waves-effect waves-light red" type="submit" name="action" ng-click="loginStore()">
+                            <i class="mdi-navigation-arrow-forward"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </form>
-        <form id="register-form" style="display: none;" class="col s8">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="store_name" ng-model="storeName" type="text" class="validate green-text">
-                    <label for="store_name">Store Name</label>
+            </form>
+            <form id="register-form" style="display: none;" class="col s6">
+                <div class="row">
+                    <div class="input-field col s7">
+                        <input id="store_name" ng-model="storeName" type="text" class="validate red-text">
+                        <label for="store_name">Store Name</label>
+                    </div>
                 </div>
-                <div class="input-field col s6">
-                    <input id="store_num" ng-model="storeNumber" type="text" class="validate green-text">
-                    <label for="store_num">Store Number</label>
+                <div class="row">
+                    <div class="input-field col s7">
+                        <input id="store_num" ng-model="storeNumber" type="text" class="validate red-text">
+                        <label for="store_num">Store Number</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="admin_name" ng-model="ownerName" type="text" class="validate green-text">
-                    <label for="admin_name">Admin Name</label>
+                <div class="row">
+                    <div class="input-field col s7">
+                        <input id="admin_name" ng-model="ownerName" type="text" class="validate red-text">
+                        <label for="admin_name">Admin Name</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="email" ng-model="storeEmail" type="email" class="validate green-text">
-                    <label for="email">Email</label>
+                <div class="row">
+                    <div class="input-field col s7">
+                        <input id="email" ng-model="storeEmail" type="email" class="validate red-text">
+                        <label for="email">Email</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="password" ng-model="storePassword" type="password" class="validate green-text">
-                    <label for="password">Password</label>
+                <div class="row">
+                    <div class="input-field col s7">
+                        <input id="password" ng-model="storePassword" type="password" class="validate red-text">
+                        <label for="password">Password</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="confirm_password" type="password" class="validate green-text">
-                    <label for="confirm_password">Confirm Password</label>
+                <div class="row">
+                    <div class="input-field col s7">
+                        <input id="confirm_password" type="password" class="validate red-text">
+                        <label for="confirm_password">Confirm Password</label>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col s2 offset-s10">
-                    <button class="btn-floating btn-large waves-effect waves-light green" type="submit" name="action" ng-click="createStore()">
-                        <i class="mdi-navigation-arrow-forward"></i>
-                    </button>
+                <div class="row">
+                    <div class="col s2 offset-s5">
+                        <button class="btn-floating btn-large waves-effect waves-light red" type="submit" name="action" ng-click="createStore()">
+                            <i class="mdi-navigation-arrow-forward"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 </div>
